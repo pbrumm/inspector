@@ -1,4 +1,0 @@
-inspector
-=========
-
-inspection database
