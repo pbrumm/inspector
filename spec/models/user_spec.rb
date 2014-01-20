@@ -99,5 +99,14 @@ describe User do
     end
 
   end
+  
+  describe "abilities" do
+  
+    before(:each) do
+	  @user = User.create!(@attr)
+	end
+  	
+	
+  end
 
 end
