@@ -2,11 +2,12 @@ require 'spec_helper'
 
 feature 'User management' do
     background do
-	  admin = FactoryGirl.create(:admin)
+	  @admin = FactoryGirl.create(:admin)
 	  @attr = {
       :email => "newuser@example.com",
       :password => "changeme",
-      :password_confirmation => "changeme"
+      :password_confirmation => "changeme",
+      :id => User.count+1
     }
 	
 	  visit root_path
@@ -23,10 +24,13 @@ feature 'User management' do
 
 	
 	scenario "updates a new user to Admin" do
+	sign_in @admin
 	visit root_path
-	#save_and_open_page
+	click_link 'Users'
+	save_and_open_page
 	expect{
 	  click_link 'Users'
+	  #save_and_open_page
 	}.to have_content "#{@attr[:email]}"
 	expect{
 	  click_link find(:css, "role-options-#{@attr[:id]}")
