@@ -23,17 +23,14 @@ feature 'User management' do
 	end
 
 	
-	scenario "updates a new user to Admin" do
+	scenario "updates a new user to Admin", js: true do
+	click_link 'Logout'
 	sign_in @admin
 	visit root_path
 	click_link 'Users'
-	save_and_open_page
-	expect{
-	  click_link 'Users'
-	  #save_and_open_page
-	}.to have_content "#{@attr[:email]}"
-	expect{
-	  click_link find(:css, "role-options-#{@attr[:id]}")
-	}
+	expect(page).to have_content "#{@attr[:email]}"
+	click_link find(:css, "role-options-#{@attr[:id]}")
+	expect(page).to have_content "Admin User VIP"
+
   end
 end
