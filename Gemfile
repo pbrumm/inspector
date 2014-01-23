@@ -12,7 +12,6 @@ gem 'foundation-rails'
 gem 'rolify'
 gem 'sendgrid'
 gem 'simple_form'
-gem 'thin'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
@@ -23,9 +22,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
   gem 'sqlite3'
-  gem 'sass-rails', '~> 4.0.0'
-  gem 'uglifier', '>= 1.3.0'
-  gem 'coffee-rails', '~> 4.0.0'
+
 end
 group :test do
   gem 'capybara'
@@ -38,5 +35,11 @@ group :production do
   gem 'thin'
   gem 'rails_12factor'
   gem 'pg'
+end
+
+group :assets do
+  gem 'sass-rails', '~> 4.0.0'
+  gem 'uglifier', '>= 1.3.0'
+  gem 'coffee-rails', '~> 4.0.0'
 end
 
