@@ -1,13 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 gem 'rails', '3.2.16'
-gem 'sqlite3'
-gem 'pg'
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
-end
+
 gem 'jquery-rails'
 gem 'cancan'
 gem 'devise'
@@ -24,10 +18,17 @@ end
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
+  gem 'sqlite3'
+    gem 'sass-rails',   '~> 3.2.3'
+    gem 'coffee-rails', '~> 3.2.1'
+    gem 'uglifier', '>= 1.0.3'
+end
+group :assets do
 end
 group :production do
   gem 'thin'
   gem 'rails_12factor'
+  gem 'pg'
 end
 group :test do
   gem 'capybara'
