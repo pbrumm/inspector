@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 gem 'rails', '4.0.2'
+gem 'thin'
 
 gem 'jquery-rails'
 gem 'turbolinks'
@@ -32,7 +33,7 @@ group :test do
 end
 
 group :production do
-  gem 'thin'
+  
   gem 'rails_12factor'
   gem 'pg'
 end
