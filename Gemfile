@@ -1,13 +1,17 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
-gem 'rails', '3.2.16'
+gem 'rails', '4.0.2'
+gem 'thin'
 
 gem 'jquery-rails'
+gem 'turbolinks'
+gem 'jbuilder', '~> 1.2'
 gem 'cancan'
 gem 'devise'
 gem 'figaro'
 gem 'foundation-rails'
 gem 'rolify'
+gem 'sendgrid'
 gem 'simple_form'
 group :development do
   gem 'better_errors'
@@ -19,16 +23,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
   gem 'sqlite3'
-    gem 'sass-rails',   '~> 3.2.3'
-    gem 'coffee-rails', '~> 3.2.1'
-    gem 'uglifier', '>= 1.0.3'
-end
-group :assets do
-end
-group :production do
-  gem 'thin'
-  gem 'rails_12factor'
-  gem 'pg'
+
 end
 group :test do
   gem 'capybara'
@@ -36,3 +31,16 @@ group :test do
   gem 'email_spec'
   gem 'selenium-webdriver'
 end
+
+group :production do
+  
+  gem 'rails_12factor'
+  gem 'pg'
+end
+
+group :assets do
+  gem 'sass-rails', '~> 4.0.0'
+  gem 'uglifier', '>= 1.3.0'
+  gem 'coffee-rails', '~> 4.0.0'
+end
+
