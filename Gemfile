@@ -6,7 +6,7 @@ gem 'jquery-rails'
 gem 'cancan'
 gem 'devise'
 gem 'figaro'
-gem 'foundation-rails'
+gem 'foundation-rails', "~>5.0.3.1"
 gem 'rolify'
 gem 'simple_form'
 group :development do
