@@ -82,3 +82,4 @@ pickle-email-*.html
 /config/application.yml
 
 Thumbs.db
+app/assets/images/Thumbs.db
