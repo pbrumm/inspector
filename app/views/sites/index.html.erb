@@ -1,4 +1,7 @@
+Sites
+
 <h3>Home</h3>
 <% @sites.each do |site| %>
   <p>site: <%=link_to site.name, site %></p>
 <% end %>
+<p>Create <%= link_to('New Site', new_site_path) %></p>

@@ -1,0 +1,8 @@
+<h1>Create a new Goodwill site</h1>
+
+<%= simple_form_for @site do |f| %>
+  <%= f.input :name %>
+  <%= f.input :number %>
+  <%= f.input :type %>
+  <%= f.button :submit, "Create Site" %>
+<% end %>
