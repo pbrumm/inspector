@@ -13,6 +13,7 @@ gem 'foundation-rails', "~>5.0.3.1"
 gem 'rolify'
 gem 'sendgrid'
 gem 'simple_form'
+gem 'pry'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]

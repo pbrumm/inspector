@@ -8,9 +8,9 @@ require 'spec_helper'
       @site = FactoryGirl.create(:site)
       @user.site_id = @site.id
       @attr = {
-        name: "My Store",
-        type: "Store",
-        number: 3
+        :name => "My Stores",
+        :site_type => "Store",
+        :site_number => 3
       }
     end
 
@@ -29,11 +29,11 @@ require 'spec_helper'
           fill_in 'Password', with: @admin.password
           click_button 'Log in'
           click_link 'Sites'
-          save_and_open_page
           click_link "New Site"
-          fill_in 'Name', with: @site.name
-          fill_in 'Number', with: @site.number
-          fill_in 'Type', with: @site.type
+          save_and_open_page
+          fill_in 'Name', with: @attr[:name]
+          fill_in 'Site number', with: @attr[:site_number]
+          fill_in 'Site type', with: @attr[:site_type]
           click_button 'Create Site'
         }.to change(Site, :count).by(1)
       end
