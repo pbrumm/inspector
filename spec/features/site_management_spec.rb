@@ -30,7 +30,7 @@ require 'spec_helper'
           click_button 'Log in'
           click_link 'Sites'
           click_link "New Site"
-          save_and_open_page
+
           fill_in 'Name', with: @attr[:name]
           fill_in 'Site number', with: @attr[:site_number]
           fill_in 'Site type', with: @attr[:site_type]
@@ -39,6 +39,22 @@ require 'spec_helper'
       end
 
       scenario "is able to edit a site" do
+        visit root_path
+        expect{
+          click_link 'Login'
+          fill_in 'Email', with: @admin.email
+          fill_in 'Password', with: @admin.password
+          click_button 'Log in'
+          click_link 'Sites'
+          click_link "#{@site.name}"
+          click_link 'Edit'
+          fill_in 'Name', with: 'Yellow'
+          fill_in 'Site type', with: "DEC"
+          click_button 'Edit Site'
+        }.to change(Site, :count).by(0)
+        expect(current_path).to eq site_path(@site.id)
+        expect(page).to have_content 'Yellow'
+        expect(page).to have_content 'DEC'
 
       end
 
@@ -51,9 +67,15 @@ require 'spec_helper'
 
     end  
 
-      scenario "will not allow a user to see other sites" do
-
+    context "unpriveliged user" do
+      scenario "will not see other sites" do
+        visit root_path
+        click_link 'Login'
+          fill_in 'Email', with: @user.email
+          fill_in 'Password', with: @user.password
+          click_button 'Log in'
+        expect(page).not_to have_content 'Sites'
       end
-    
+    end
      
    end

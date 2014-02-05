@@ -6,9 +6,16 @@
 </p>
 
 <p>
-  <strong>Score:</strong>
+  <strong>Type:</strong>
   <%= @site.site_type %>
 </p>
+
+<p>
+  <strong>ID:</strong>
+  <%= @site.site_number %>
+</p>
+
+
 
 <%= link_to 'Edit', edit_site_path(@site) %> |
 <%= link_to 'Back', sites_path %>
