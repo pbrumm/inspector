@@ -1,18 +1,21 @@
 class SitesController < ApplicationController
-  before_filter :authenticate_user!
+  #before_filter :authenticate_user!
+  before_filter do
+  	authorize! :manage, Site
+  end
 
   def index
-    authorize! :index, @user, :message => "Not authorized as an administrator."
+    #authorize! :index, @user, :message => "Not authorized as an administrator."
     @sites = Site.all
   end
 
   def new
-    authorize! :index, @user, :message => "Not authorized as an administrator."
+    #authorize! :index, @user, :message => "Not authorized as an administrator."
     @site = Site.new
   end
 
   def create
-  	    authorize! :index, @user, :message => "Not authorized as an administrator."
+  	    #authorize! :index, @user, :message => "Not authorized as an administrator."
         @site = Site.create!(site_params)
   	
   	respond_to do |format|
@@ -31,12 +34,12 @@ class SitesController < ApplicationController
   end
 
   def edit
-    authorize! :index, @user, :message => "Not authorized as an administrator."
+    #authorize! :index, @user, :message => "Not authorized as an administrator."
     @site = find_site
   end
 
   def update
-    authorize! :index, @user, :message => "Not authorized as an administrator."
+    #authorize! :index, @user, :message => "Not authorized as an administrator."
     @site = find_site
     respond_to do |format|
       if @site.update(site_params)

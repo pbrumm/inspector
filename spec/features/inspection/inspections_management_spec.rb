@@ -18,7 +18,7 @@ require 'spec_helper'
 
       context "as VIP" do
         background do
-          @vip = FactoryGirl.create(:vip)
+          @vip = FactoryGirl.create(:VIP)
         end
 
       scenario "can create a new inspection for a site" do
@@ -26,10 +26,11 @@ require 'spec_helper'
         expect{
           click_link 'Login'
           fill_in 'Email', with: @vip.email
-          fill_in  'Password', with: @vip.email
+          fill_in  'Password', with: @vip.password
           click_button 'Log in'
+          save_and_open_page
           click_link 'Sites'
-          click_link '@site.name'
+          click_link "#{@site.name}"
           click_link "#{@attr.name}"
         }.to change(Inspection, :count).by(1)
 

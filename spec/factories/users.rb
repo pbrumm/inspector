@@ -13,8 +13,8 @@ FactoryGirl.define do
       after(:create) {|user| user.add_role(:admin)}
     end
 
-    factory :vip do
-      after(:create) {|user| user.add_role(:vip)}
+    factory :VIP do
+      after(:create) {|user| user.add_role(:VIP)}
     end
   end
 end

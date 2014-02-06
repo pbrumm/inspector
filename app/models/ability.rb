@@ -5,7 +5,7 @@ class Ability
     user ||= User.new # guest user (not logged in)
     if user.has_role? :admin
       can :manage, :all
-    else user.has_role? :vip
+    else user.has_role? :VIP
       can :manage, Site 
       can :manage, Inspection     
     end
