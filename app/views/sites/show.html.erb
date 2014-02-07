@@ -15,9 +15,14 @@
   <%= @site.site_number %>
 </p>
 
-<% Inspection.all.each do |form| %>
-      <%= link_to "#{form.name}", inspection_path(form) %>
-       <% end %>
+
+
+  <% @inspections.each do |form| %>
+  <p><%=link_to form.name, form %></p>
+  <% end %>
+
 
 <%= link_to 'Edit', edit_site_path(@site) %> |
 <%= link_to 'Back', sites_path %>
+
+
