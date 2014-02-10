@@ -1,0 +1,4 @@
+<% simple_form_for @inspection, url: new_inspection_path(@inspection) do |f| %>
+  <%= f.input :survey_id, collection: @surveys.name %>
+  <%= f.button :submit, submit_text %>
+<% end %>

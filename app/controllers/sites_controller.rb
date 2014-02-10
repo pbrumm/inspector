@@ -31,6 +31,8 @@ class SitesController < ApplicationController
 
   def show
     @site = find_site
+
+    @inspections = Inspection.all
   end
 
   def edit
@@ -43,7 +45,7 @@ class SitesController < ApplicationController
     @site = find_site
     respond_to do |format|
       if @site.update(site_params)
-        format.html { redirect_to @site, noticd: 'Site was updated'}
+        format.html { redirect_to @site, notice: 'Site was updated'}
         format.json { head :no_content }
       else
         format.html { render action: 'edit'}

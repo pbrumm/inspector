@@ -24,16 +24,16 @@ require 'spec_helper'
 
       scenario "can create a new inspection for a site" do
         visit root_path
-        expect{
-          click_link 'Login'
-          fill_in 'Email', with: @vip.email
-          fill_in  'Password', with: @vip.password
-          click_button 'Log in'
-          click_link 'Sites'
-          click_link "#{@site.name}"
-          save_and_open_page
-          click_link "#{@attr[:name]}"
-        }.to change(Inspection, :count).by(1)
+        
+        click_link 'Login'
+        fill_in 'Email', with: @vip.email
+        fill_in  'Password', with: @vip.password
+        click_button 'Log in'
+        click_link 'Sites'
+        click_link "#{@site.name}"
+        save_and_open_page
+        click_link "#{@attr[:name]}"
+        page.should have_content("#{@attr[:name]}")
 
       end
 
