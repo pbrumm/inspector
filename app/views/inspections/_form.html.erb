@@ -1,4 +1,11 @@
-<% simple_form_for @inspection, url: new_inspection_path(@inspection) do |f| %>
-  <%= f.input :survey_id, collection: @surveys.name %>
+
+
+<% simple_form_for @inspection, url: site_inspections_path(@site) do |f| %>
+<%= f.input :survey_id, collection: @surveys.collect{ |s| [s.name, s] }  %>
+
+  <% f.hidden_field :site_id, as: :hidden, value: @site.id %>
   <%= f.button :submit, submit_text %>
 <% end %>
+
+Site id = <%= @site.id %>
+

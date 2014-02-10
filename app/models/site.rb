@@ -4,5 +4,6 @@ class Site < ActiveRecord::Base
 
   has_one :user
   has_many :inspections
+  accepts_nested_attributes_for :inspections
 
 end
