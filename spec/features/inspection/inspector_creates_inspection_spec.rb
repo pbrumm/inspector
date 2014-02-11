@@ -30,13 +30,13 @@ require 'spec_helper'
           click_button 'Log in'
           click_link 'Sites'
           click_link "#{@site.name}"
-          save_and_open_page
           # click_link "#{@attr[:name]}"
           # page.should have_content("#{@attr[:name]}")
           click_link "New Inspection"
           page.should have_content("#{@site.name}")
           select("#{@survey.name}")
-          click_button 'Create Inspection'
+
+          click_button 'Create inspection'
         }.to change(Inspection, :count).by(1)
       end
     end

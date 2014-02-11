@@ -1,0 +1,1 @@
+SURVEY_OPTIONS = ["LP Store Safety", "DEC Review"]

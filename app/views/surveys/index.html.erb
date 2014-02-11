@@ -1,0 +1,5 @@
+<h3>All surveys</h3>
+<% @surveys.each do |survey| %>
+  <p><%=link_to survey.name, survey %></p>
+<% end %>
+<p>Create <%= link_to('New Survey', new_survey_path) %></p>

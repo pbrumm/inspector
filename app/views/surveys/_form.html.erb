@@ -1,0 +1,4 @@
+<%= simple_form_for @survey do |f| %>
+  <%= f.input :name, collection: SURVEY_OPTIONS.collect{ |s| [s.name, s]} %>
+  <%= f.input :active %>
+<% end %>
