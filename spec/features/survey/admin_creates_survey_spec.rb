@@ -8,6 +8,7 @@ require 'spec_helper'
         :active => true
       }
       @survey_names = ["#{@attr[:name]}", "number 2"]
+      SURVEY_OPTIONS = ["#{@attr[:name]}", "number 2"]
     end
 
     context "as an admin" do
@@ -26,6 +27,7 @@ require 'spec_helper'
           click_link 'New Survey'
           save_and_open_page
           select("#{@attr[:name]}") 
+          click_button 'Create survey'
         }.to change(Survey,:count).by(1)
         page.should have_content("#{@attr[:name]}")
       end

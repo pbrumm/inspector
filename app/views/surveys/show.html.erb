@@ -1,0 +1,13 @@
+<p>
+  <strong> Name:
+  </strong> <%= @survey.name %>
+</p>
+
+<p>
+  <% if @survey.active? %>
+   <strong>Active</strong>
+  <% else %>
+   <strong>Inactive</strong>
+  <% end %>
+</p>
+
