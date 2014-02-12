@@ -14,7 +14,7 @@ class InspectionsController < ApplicationController
   def create
     @site = Site.find(params[:site_id])
     @inspection = @site.inspections.build(inspection_params)
-
+binding.pry
     respond_to do |format|
       if @inspection.save
         format.html { redirect_to site_inspection_path(@site, @inspection), notice: 'Inspection was created'}
