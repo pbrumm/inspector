@@ -5,6 +5,8 @@ Inspector::Application.routes.draw do
   resources :sites do
     resources :inspections
   end
-  resources :surveys
+  resources :surveys do
+  	resources :items
+  end
   
 end

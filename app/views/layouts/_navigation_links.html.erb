@@ -16,5 +16,6 @@
 <% end %>
 <% if current_user and current_user.has_role? :VIP %>
   <li><%= link_to 'Sites', sites_path %></li>
+  <li><%= link_to 'Surveys', surveys_path %></li>
 <% end %>
 

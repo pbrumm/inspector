@@ -1,0 +1,10 @@
+<%= simple_form_for(@item, url: survey_items_path(@survey)) do |f| %>
+  <%= f.input :category %>
+  <%= f.input :name %>
+  <%= f.input :sub_category %>
+  <%= f.input :explanation %>
+  <%= f.input :scoring %>
+  <%= f.input :high_score %>
+  <%= f.input :all_or_nothing %>
+  <%= f.button :submit, submit_text %>
+<% end %>
