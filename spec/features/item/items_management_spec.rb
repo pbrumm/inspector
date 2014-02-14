@@ -52,12 +52,13 @@ require 'spec_helper'
                 click_link "#{@survey.name}"
                 click_link "New Item"
                 fill_in 'Category', with: @attr[:category]
-                fill_in 'Sub_category', with: @attr[:sub_category]
+                fill_in 'Sub category', with: @attr[:sub_category]
                 fill_in 'Name', with: @attr[:name]
                 fill_in 'Explanation', with: @attr[:explanation]
                 fill_in 'Scoring', with: @attr[:scoring]
                 fill_in 'High score', with: @attr[:high_score]
-                fill_in 'All or nothing', with: @attr[:all_or_nothing]
+                save_and_open_page
+                check 'All or nothing', :checked
                 click_button 'Create item'
               }.to change(Item, :count).by(1)
             end

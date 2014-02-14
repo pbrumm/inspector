@@ -1,0 +1,28 @@
+<h3><%= @item.name %> for <%= @survey.name %></h3>
+
+<p>
+  <strong>Category: 
+  </strong><%= @item.category %>
+</p>
+<p>
+  <strong>Sub category: 
+  </strong><%= @item.sub_category %>
+</p>
+<p>
+  <strong>Explanation: 
+  </strong><%= @item.explanation %>
+</p>
+<p>
+  <strong>Scoring: 
+  </strong><%= @item.scoring %>
+</p>
+<p>
+  <strong>High score: 
+  </strong><%= @item.high_score %>
+</p>
+<p>
+  <% if @item.all_or_nothing? %>
+	<strong>Category: 
+	</strong><%= @item.category %>
+  <% end %>
+</p>

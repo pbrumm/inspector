@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140213212709) do
+ActiveRecord::Schema.define(version: 20140214165343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20140213212709) do
     t.integer "scoring"
     t.integer "high_score"
     t.boolean "all_or_nothing"
+    t.integer "survey_id"
   end
 
   create_table "roles", force: true do |t|

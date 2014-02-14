@@ -16,7 +16,7 @@ gem 'simple_form'
 gem 'pry'
 group :development do
   gem 'better_errors'
-  gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
+  gem 'binding_of_caller'
   gem 'quiet_assets'
   gem 'rails_layout'
 end
