@@ -1,11 +1,11 @@
 class ItemsController < ApplicationController
 
 	def new
-	  @survey = Survey.find(params[:survey_id])
+	  @survey = find_survey
 	end
 
 	def create
-	  @survey = Survey.find(params[:survey_id])
+	  @survey = find_survey
 	  @item = @survey.items.build(item_params)
 
 	  respond_to do |format|
@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
 	end
 
 	def show
-	  @survey = Survey.find(params[:survey_id])
+	  @survey = find_survey
 	  @item = Item.find(params[:id])
 	end
 
@@ -28,5 +28,9 @@ class ItemsController < ApplicationController
 
   def item_params
   	params.require(:item).permit(:name, :survey_id, :category, :sub_category, :explanation, :scoring, :high_score, :all_or_nothing)
+  end
+
+  def find_survey
+  	Survey.find(params[:survey_id])
   end
 end

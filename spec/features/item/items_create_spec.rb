@@ -57,7 +57,7 @@ require 'spec_helper'
                 fill_in 'Explanation', with: @attr[:explanation]
                 fill_in 'Scoring', with: @attr[:scoring]
                 fill_in 'High score', with: @attr[:high_score]
-                save_and_open_page
+
                 check 'All or nothing', :checked
                 click_button 'Create item'
               }.to change(Item, :count).by(1)
