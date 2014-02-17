@@ -32,7 +32,7 @@ class SitesController < ApplicationController
   def show
     @site = find_site
 
-    @inspections = Inspection.all
+    @inspections = @site.inspections.all
   end
 
   def edit

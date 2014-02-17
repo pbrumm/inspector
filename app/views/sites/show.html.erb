@@ -1,8 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @site.name %>
+  <h2>Details for: <%= @site.name %></h2>
 </p>
 
 <p>
@@ -14,6 +13,23 @@
   <strong>ID:</strong>
   <%= @site.site_number %>
 </p>
+
+<h3>Inspections</h3>
+<table>
+	<thead>
+		<th>Name</th>
+		<th>Date</th>
+	</thead>
+
+	<tbody>
+		<% @inspections.each do |inspection| %>
+		  <tr>
+		  	<td><%= link_to "#{inspection.name}", site_inspection_path(inspection.site_id, inspection.id) %></td>
+		  	<td><%= inspection.updated_at.strftime("%m/%d/%Y") %></td>
+		  </tr>
+		<% end %>
+	</tbody>
+</table>
 
 
 
