@@ -42,7 +42,10 @@ feature "view items layout" do
 								click_button 'Log in'
 								click_link 'Sites'
 								click_link "#{@site.name}"
-								click_link "#{@inspection.name}"
+								click_link "#{@survey.name}"
+								#click_link "New inspection"
+								#select("#{SURVEY_OPTION[0]}", from: '#inspection_survey_id')
+								#click_button 'Create inspection'
 								save_and_open_page
 								page.should have_content("#{@item_2.name}")
 								page.should have_content("#{@item_3.name}")
