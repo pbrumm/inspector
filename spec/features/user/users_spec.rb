@@ -32,7 +32,7 @@ feature 'User management' do
 	click_link 'Users'
 	expect(page).to have_content "#{@attr[:email]}"
 	save_and_open_page	
-	click_link find(:css, "role-options-#{@attr[:id]}")
+	click_link find(:xpath, ('//a[data-reveal-id=#role-options-'+"#{@attr[:id]}"]))
 	expect(page).to have_content "Admin User VIP"
 
   end
