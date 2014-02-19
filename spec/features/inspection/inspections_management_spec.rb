@@ -19,23 +19,29 @@ require 'spec_helper'
       context "as VIP" do
         background do
           @vip = FactoryGirl.create(:VIP)
-          @form = FactoryGirl.create(:inspection, name: @attr[:name])
+          SURVEY_OPTION = ["LP test Test", "number 2"]
+          @survey = FactoryGirl.create(:survey, name: "#{SURVEY_OPTION[0]}", user_id: @vip.id)
         end
 
-      scenario "can create a new inspection for a site" do
-        visit root_path
+        context "survey exists" do
         
-        click_link 'Login'
-        fill_in 'Email', with: @vip.email
-        fill_in  'Password', with: @vip.password
-        click_button 'Log in'
-        click_link 'Sites'
-        click_link "#{@site.name}"
-        save_and_open_page
-        click_link "#{@attr[:name]}"
-        page.should have_content("#{@attr[:name]}")
 
-      end
+          scenario "can create a new inspection for a site" do
+            visit root_path
+            
+            click_link 'Login'
+            fill_in 'Email', with: @vip.email
+            fill_in  'Password', with: @vip.password
+            click_button 'Log in'
+            click_link 'Sites'
+            click_link "#{@site.name}"
+            save_and_open_page
+            click_link "New Inspection"
+            
+            page.should have_content("@survey.name}")
+
+          end
+        end
 
       scenario "can view a list of inspections for a site" do
 

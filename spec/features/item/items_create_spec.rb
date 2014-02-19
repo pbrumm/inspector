@@ -25,15 +25,15 @@ require 'spec_helper'
           @site = FactoryGirl.create(:site)
         end
 
-        context "in inspections" do
+        context "with a survey" do
           background do
-            @inspection = FactoryGirl.create(:inspection, site_id: @site.id, user_id: @VIP.id)
+            @survey = FactoryGirl.create(:survey, name: "#{SURVEY_OPTION[0]}", user_id: @VIP.id, site_id: @site.id)
           end
 
 
-          context "for a survey" do
+          context "in inspections" do
             background do
-              @survey = FactoryGirl.create(:survey, name: "#{SURVEY_OPTION[0]}", user_id: @VIP.id, site_id: @site.id, inspection_id: @inspection.id)
+              @inspection = FactoryGirl.create(:inspection, site_id: @site.id, user_id: @VIP.id, survey_id: @survey.id)
             end
 
             scenario "can create an item" do
