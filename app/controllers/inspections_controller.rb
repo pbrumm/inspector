@@ -17,7 +17,8 @@ class InspectionsController < ApplicationController
 
     respond_to do |format|
       if @inspection.save
-        format.html { redirect_to site_inspection_path(@site, @inspection), notice: 'Inspection was created'}
+        #format.html { redirect_to site_inspection_path(@site, @inspection), notice: 'Inspection was created'}
+        format.html { redirect_to  }
         format.json { render action: 'show', status: :created, location: @inspection }
       else
         format.html { render action: 'new' }

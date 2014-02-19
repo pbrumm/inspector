@@ -23,7 +23,7 @@ feature "view items layout" do
 
 					context "for a survey" do
 						background do
-              @survey = FactoryGirl.create(:survey, name: "#{SURVEY_OPTION[0]}", user_id: @VIP.id, site_id: @site.id, inspection_id: @inspection.id)
+              @survey = FactoryGirl.create(:survey, name: "#{SURVEY_OPTION[0]}", user_id: @VIP.id, site_id: @site.id)
 						end
 
 						context "with three items" do

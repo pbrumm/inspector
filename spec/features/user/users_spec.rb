@@ -3,6 +3,7 @@ require 'spec_helper'
 feature 'User management' do
     background do
 	  @admin = FactoryGirl.create(:admin)
+	  @role = Role.create!(name: "admin")
 	  @attr = {
       :email => "newuser@example.com",
       :password => "changeme",
@@ -31,9 +32,16 @@ feature 'User management' do
 	visit root_path
 	click_link 'Users'
 	expect(page).to have_content "#{@attr[:email]}"
-	save_and_open_page	
-	click_link find(:xpath, ('//a[data-reveal-id=#role-options-'+"#{@attr[:id]}"]))
-	expect(page).to have_content "Admin User VIP"
+
+	#locate("//*[@id=role-options-#{@attr[:id]}}]").find("//a").click
+	#find_link("@id=role-options-#{@attr[:id]}").click
+	#find('a', :match => "role-options-#{@attr[:id]}").click
+	#find('//a')
+	#find(:xpath, "//a[contains(@role-options-#{@attr[:id]})]").click
+	#find(:xpath, ".//table/tr/td[]")
+	find(:css, "a[data-reveal-id=" + "role-options-#{@attr[:id]}]").click
+
+	expect(page).to have_content @role.name
 
   end
 end
