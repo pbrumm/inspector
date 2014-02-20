@@ -1,4 +1,4 @@
-<%= simple_form_for(:item, url: survey_items_path(@survey)) do |f| %>
+<%= simple_form_for @item do |f| %>
   <%= f.input :category %>
   <%= f.input :name %>
   <%= f.input :sub_category %>
@@ -6,6 +6,6 @@
   <%= f.input :scoring %>
   <%= f.input :high_score %>
   <%= f.input :all_or_nothing, as: :boolean, checked_value:true, unchecked_value: false %>
-  <%= f.hidden_field :survey_id, as: :hidden, value: @survey.id %>
+  <%= f.hidden_field :survey_id, as: :hidden, value: params[:survey_id] %>
   <%= f.button :submit, submit_text %>
 <% end %>

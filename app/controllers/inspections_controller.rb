@@ -1,8 +1,9 @@
 class InspectionsController < ApplicationController
 
   def show
+   #binding.pry
     @site = Site.find(params[:site_id])
-     @inspection = @site.inspections
+    @inspection = @site.inspections
  end
 
   def new
@@ -12,7 +13,7 @@ class InspectionsController < ApplicationController
   end
 
   def create
-    @site = Site.find(params[:site_id])
+    @site = Site.find(params[:inspection][:site_id])
     @inspection = @site.inspections.build(inspection_params)
 
     respond_to do |format|
