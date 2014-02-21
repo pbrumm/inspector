@@ -1,5 +1,27 @@
 <h3>All surveys</h3>
-<% @surveys.each do |survey| %>
-  <p><%=link_to survey.name, survey %></p>
-<% end %>
-<p>Create <%= link_to('New Survey', new_survey_path) %></p>
+
+
+		<table>
+		<thead>
+			<th>Name</th>
+			<th>Modified</th>
+			<th>Status</th>
+		</thead>
+
+		<tbody>
+<% @surveys.each do |survey| %>			
+		<tr>
+				<td><%=link_to survey.name, survey %>
+				</td>
+				<td><%= survey.updated_at.strftime("%m/%d/%Y") %>
+				</td>
+				<td><%= survey.active? %>
+				</td>
+			</tr>
+<% end %>		
+		</tbody>
+
+		</table>
+
+
+<p>Create <%= link_to('New Survey', new_survey_path()) %> | <%= link_to('View all items', items_path) %></p>

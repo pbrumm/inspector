@@ -25,7 +25,7 @@ require 'spec_helper'
           click_button 'Log in'
           click_link 'Surveys'
           click_link 'New Survey'
-          save_and_open_page
+
           select("#{@attr[:name]}") 
           click_button 'Create survey'
         }.to change(Survey,:count).by(1)

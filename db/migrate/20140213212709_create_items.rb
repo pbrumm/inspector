@@ -8,6 +8,8 @@ class CreateItems < ActiveRecord::Migration
       t.integer :scoring
       t.integer :high_score
       t.boolean :all_or_nothing
+
+      t.timestamps
     end
   end
 end
