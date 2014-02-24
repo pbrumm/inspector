@@ -3,7 +3,7 @@ require 'spec_helper'
 feature "create items for specific layout" do
 	
 	background do
-		SURVEY_OPTION = ["LP test Test", "number 2"]
+		SURVEY_OPTIONS = ["LP test Test", "number 2"]
 		@attr = {
 			:category => "General",
 			:name => "Return cash to customer",
@@ -22,7 +22,7 @@ feature "create items for specific layout" do
 
 	  	context "for a specific survey" do
 	  		background do
-	  			@survey = FactoryGirl.create(:survey, user_id: @vip.id, name: SURVEY_OPTION[0])
+	  			@survey = FactoryGirl.create(:survey, user_id: @vip.id, name: SURVEY_OPTIONS[0])
 	  		end
 
 	  		scenario "make a new item" do

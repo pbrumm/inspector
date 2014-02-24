@@ -3,7 +3,7 @@ require 'spec_helper'
 feature "view items layout" do 
 
 	background do
-		SURVEY_OPTION = ["LP test Test", "number 2"]
+		SURVEY_OPTIONS = ["LP test Test", "number 2"]
 	end
 
 		context "as a VIP" do
@@ -18,7 +18,7 @@ feature "view items layout" do
 
 				context "with a survey" do
 					background do
-						@survey = FactoryGirl.create(:survey, name: "#{SURVEY_OPTION[0]}", user_id: @VIP.id, site_id: @site.id)
+						@survey = FactoryGirl.create(:survey, name: "#{SURVEY_OPTIONS[0]}", user_id: @VIP.id, site_id: @site.id)
 					end
 
 					context "in inspection" do
@@ -40,14 +40,11 @@ feature "view items layout" do
 								fill_in 'Email', with: @VIP.email
 								fill_in 'Password', with:@VIP.password
 								click_button 'Log in'
-								click_link 'Sites'
-								click_link "#{@site.name}"
+								click_link 'Surveys'
+								#click_link "#{@site.name}"
 
 								click_link "#{@survey.name}"
-								#click_link "New inspection"
-								#select("#{SURVEY_OPTION[0]}", from: '#inspection_survey_id')
-								#click_button 'Create inspection'
-
+save_and_open_page
 								page.should have_content("#{@item_2.name}")
 								page.should have_content("#{@item_3.name}")
 								page.should have_no_content("#{@item_1.name}")

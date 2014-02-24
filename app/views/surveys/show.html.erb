@@ -10,6 +10,67 @@
    <strong>Inactive</strong>
   <% end %>
 </p>
+<hr class="light">
+
+<table>
+	<thead>
+		<tr><th><h1>1nt Quarter 2014 <%= @survey.name %> Inspection</h1></th></tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<td>For: <%= @site.name %></td>
+			<td>Manager: </td>
+		</tr>
+		<tr>
+			<td>Date: 1/1/2014</td>
+			<td>Inspected by: Bob</td>
+		</tr>
+		<tr>
+			<td>Previous:</td>
+			<td>Last score</td>
+			<td>Current:</td>
+			<td>TBD</td>
+		</tr>
+	</tbody>
+
+</table>
+
+
+<p class="all">*Note: All items in red text constitute an "all or nothing" point scale</p>
+<hr class="light">
+
+<% @items.group_by(&:category).each do |key, group| %>
+	<h2><%= "#{key}" %></h2>
+	<% group.group_by(&:sub_category).each do |ikey, igroup| %>
+	  <h3><%= "#{ikey}" %></h3>
+	  <% igroup.sort_by(&:sub_category).each do |item|  %>
+	    <div class="item_enclosure row">
+	    	<div class="item_text small-9 large-9 columns">
+	    		<%= item.name %> 
+	    		<% if item.explanation? %>
+	    		  </ br><%= simple_format h(item.explanation) %>
+	    		<% end %>
+	    	</div>
+	    	<div class="item_scoring small-3 large-3 columns">
+	    		<div class="item_score row small-6 columns">
+	    			XX
+	    		</div>
+	    		<div class="item_hiscore small-6 columns">
+	    			<%= item.high_score %>
+	    		</div>
+	    	</div>
+	    	
+	    </div> 
+	  <% end %>
+	<% end %>
+	<% end %>
+	
+	
+
+
+
+
 
 <h4><%= link_to 'New Item', new_item_path(survey_id: @survey.id) %></h4>
 

@@ -26,6 +26,9 @@ class SurveysController < ApplicationController
 
   def show
     @survey = find_survey
+    @site = find_site
+    @items = Item.where(:survey_id => @survey.id)
+    @inspection = nil 
   end
 
   private
@@ -35,6 +38,14 @@ class SurveysController < ApplicationController
 
   def find_survey
     Survey.find(params[:id])
+  end
+
+  def find_site
+    if params[:site_id]
+      @site = Site.find(:site_id)
+    else
+      @site = Struct.new(:name).new("TBD")
+    end
   end
 
 
