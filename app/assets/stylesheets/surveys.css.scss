@@ -29,3 +29,33 @@ div.total.item_scoring {
 	border-right: 2px solid #000;
 	line-height: 20px;
 }
+
+div.survey-details {
+	position: relative;
+	width: 100%;
+}
+
+div.mytable {
+	position:relative;
+	float:right;
+	clear:both;
+}
+
+table.surv-head, th, td {
+
+	border-collapse:collapse;
+	border: 1px solid #000;
+	text-align: center;
+}
+
+td.prev-score {
+	background-color: #ECDB10
+}
+
+td.run-score {
+	background-color: #07C30F
+}
+
+span.my-red {
+	text-color: red;
+}

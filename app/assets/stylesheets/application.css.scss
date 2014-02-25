@@ -14,3 +14,14 @@
 .redbox {
 	border:2px solid red;
 }
+
+hr.light {
+	height: 12px;
+	border: 0;
+	box-shadow: inset 0 12px 12px -12px rgba(21,35,191,0.5);
+}
+
+table.surv-head, th {
+	border: 1px solid #000;
+	text-alignment: center;
+}

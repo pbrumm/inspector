@@ -11,33 +11,43 @@
   <% end %>
 </p>
 <hr class="light">
+<h1>1nt Quarter 2014 <%= @survey.name %> Inspection</h1>
 
-<table>
+<div class="survey-details row">
+	<p class="surv-left">For: <%= @site.name %>
+	<span class="surv-right">Manager: @site.user.name</span></p>
+	<p class="surv-left">Date: @inspection.modified_by <span class="surv-right">Inspected by: @Inspection.user_id.name</span></p>
+</div>
+
+<div class="mytable">
+
+
+<table class="surv-head">
 	<thead>
-		<tr><th><h1>1nt Quarter 2014 <%= @survey.name %> Inspection</h1></th></tr>
+		<tr>
+			<th>
+				Date
+			</th>
+			<th>
+			Previous</th>
+			<th>
+				Current</th>
+		</tr>
 	</thead>
 
 	<tbody>
 		<tr>
-			<td>For: <%= @site.name %></td>
-			<td>Manager: </td>
+			<td>@inspection.previous.date</td>
+			<td class="prev-score">@inspection.previous.score</td>
+			<td class="run-score">100</td>
 		</tr>
-		<tr>
-			<td>Date: 1/1/2014</td>
-			<td>Inspected by: Bob</td>
-		</tr>
-		<tr>
-			<td>Previous:</td>
-			<td>Last score</td>
-			<td>Current:</td>
-			<td>TBD</td>
-		</tr>
+		
 	</tbody>
 
 </table>
+</div>
 
-
-<p class="all">*Note: All items in red text constitute an "all or nothing" point scale</p>
+<p class="all">*Note: All items in <span class="my-red">red</span> text constitute an "all or nothing" point scale</p>
 <hr class="light">
 
 <% @items.group_by(&:category).each do |key, group| %>
