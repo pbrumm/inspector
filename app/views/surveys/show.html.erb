@@ -52,13 +52,16 @@
 	    		  </ br><%= simple_format h(item.explanation) %>
 	    		<% end %>
 	    	</div>
-	    	<div class="item_scoring small-3 large-3 columns">
-	    		<div class="item_score row small-6 columns">
-	    			XX
-	    		</div>
-	    		<div class="item_hiscore small-6 columns">
-	    			<%= item.high_score %>
-	    		</div>
+	    	<div class="item_scoring small-3 columns">
+	    		<div class="row">
+		    		<div class="item_score small-6 columns">
+		    			XX
+		    		</div>
+		    		<div class="item_hiscore small-6 columns">
+		    			/ <%= item.high_score %>
+		    		</div>
+	    	</div>
+	    		
 	    	</div>
 	    	
 	    </div> 

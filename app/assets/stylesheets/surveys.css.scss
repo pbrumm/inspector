@@ -3,11 +3,18 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 div.item_scoring {
-	border-width: 1px;
-	border-color: #000;
+	border: 1px solid #000;
+	padding: 0px -1px;
+	text-align: center;
+	height: 24px;
+	line-height: 22px;
 }
 
 div.item_score {
 	background-color: #05D116;
+	border-right: 1px solid #000;
+}
 
+div.high_score {
+	background-color: #FFF
 }
