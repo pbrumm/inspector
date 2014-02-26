@@ -3,7 +3,9 @@ class InspectionsController < ApplicationController
   def show
    #binding.pry
     @site = Site.find(params[:site_id])
-    @inspection = @site.inspections
+    @inspection = Inspection.find(params[:id])
+    @survey = Survey.find(@inspection.survey_id)
+    @items = Item.where(:id == @survey.id)
  end
 
   def new
@@ -29,6 +31,7 @@ class InspectionsController < ApplicationController
   end
 
   def index
+    
     @inspections = Inspection.all
   end
 

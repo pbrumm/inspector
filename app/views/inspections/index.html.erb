@@ -1,4 +1,4 @@
 <h3>All inspections</h3>
 <% @inspections.each do |i| %>
-  <p><%=link_to i.name, i %></p>
+  <p><%=link_to i.name, inspection_path(i) %></p>
 <% end %>

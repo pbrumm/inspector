@@ -11,91 +11,9 @@
   <% end %>
 </p>
 <hr class="light">
-<h1>1nt Quarter 2014 <%= @survey.name %> Inspection</h1>
-
-<div class="survey-details row">
-	<p class="surv-left">For: <%= @site.name %>
-	<span class="surv-right">Manager: @site.user.name</span></p>
-	<p class="surv-left">Date: @inspection.modified_by <span class="surv-right">Inspected by: @Inspection.user_id.name</span></p>
-</div>
-
-<div class="mytable">
 
 
-<table class="surv-head">
-	<thead>
-		<tr>
-			<th>
-				Date
-			</th>
-			<th>
-			Previous</th>
-			<th>
-				Current</th>
-		</tr>
-	</thead>
-
-	<tbody>
-		<tr>
-			<td>@inspection.previous.date</td>
-			<td class="prev-score">@inspection.previous.score</td>
-			<td class="run-score">100</td>
-		</tr>
-		
-	</tbody>
-
-</table>
-</div>
-
-<p class="all">*Note: All items in <span class="my-red">red</span> text constitute an "all or nothing" point scale</p>
-<hr class="light">
-
-<% @items.group_by(&:category).each do |key, group| %>
-	<h2><%= "#{key}" %></h2>
-	<% group.group_by(&:sub_category).each do |ikey, igroup| %>
-	  <h3><%= "#{ikey}" %></h3>
-	  <% igroup.sort_by(&:sub_category).each do |item|  %>
-	    <div class="item_enclosure row">
-	    	<div class="item_text small-9 large-9 columns">
-	    		<%= item.name %> 
-	    		<% if item.explanation? %>
-	    		  </ br><%= simple_format h(item.explanation) %>
-	    		<% end %>
-	    	</div>
-	    	<div class="item_scoring small-3 columns">
-	    		<div class="row">
-		    		<div class="item_score small-6 columns">
-		    			XX
-		    		</div>
-		    		<div class="item_hiscore small-6 columns">
-		    			/ <%= item.high_score %>
-		    		</div>
-	    	</div>
-	    		
-	    	</div>
-	    	
-	    </div> 
-	  <% end %>
-	    	  <div class="item enclosure row"> 
-	    			<div class="item_text total small-9 large-9 columns">
-	    				Total:
-		    		</div>
-		    		<div class="item_scoring small-3 total columns">
-		    			<div class="row">
-		    				<div class="item_score small-6 columns">
-				    			XX
-				    		</div>
-				    		<div class="item_hiscore small-6 columns">
-				    			XX
-				    		</div>
-		    			</div>
-		    		</div> 
-		    		
-		    	</div>
-	<% end %>
-	<% end %>
-	
-	
+	<%= render partial: 'lp_survey' %>
 
 
 
