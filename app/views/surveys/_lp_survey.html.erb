@@ -37,7 +37,9 @@
 <p class="all">*Note: All items in <span class="my-red">red</span> text constitute an "all or nothing" point scale</p>
 <hr class="light">
 
-<% @items.group_by(&:category).each do |key, group| %>
+<%= form_for @inspection do |f| %>
+	<%= f.fields_for :scores do |builder| %>
+	<% @items.group_by(&:category).each do |key, group| %>
 	<h2><%= "#{key}" %></h2>
 	<% group.group_by(&:sub_category).each do |ikey, igroup| %>
 	  <h3><%= "#{ikey}" %></h3>
@@ -49,14 +51,19 @@
 	    		  </ br><%= simple_format h(item.explanation) %>
 	    		<% end %>
 	    	</div>
-	    	<div class="item_scoring small-3 columns">
+	    	<div class="small-3 columns">
+	    		<div class="item_scoring">
 	    		<div class="row">
 		    		<div class="item_score item-<%= item.id %> small-6 columns">
-		    			XX
+		    			<%= builder.text_field :score_item, placeholder: item.high_score %>
+		    			<%= builder.hidden_field :survey_id, value: @survey.id %>
+		    			<%= builder.hidden_field :item_id, as: :hidden, value: item.id %>
+		    			<%= builder.hidden_field :inspection_id, as: :hidden, value: params[:id] %>
 		    		</div>
 		    		<div class="item_hiscore item-<%= item.id %> small-6 columns">
 		    			/ <%= item.high_score %>
 		    		</div>
+		    	</div>
 	    	</div>
 	    		
 	    	</div>
@@ -81,3 +88,7 @@
 		    	</div>
 	<% end %>
 	<% end %>
+	
+	<%= f.submit submit_text %>
+	<% end %>
+<% end %>

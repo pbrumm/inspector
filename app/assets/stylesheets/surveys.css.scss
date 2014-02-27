@@ -13,6 +13,7 @@ div.item_scoring {
 div.item_score {
 	background-color: #05D116;
 	border-right: 1px solid #000;
+
 }
 
 div.high_score {
@@ -28,6 +29,7 @@ div.total.item_scoring {
 	border: 2px solid #000;
 	border-right: 2px solid #000;
 	line-height: 20px;
+	padding: 0;
 }
 
 div.survey-details {
@@ -58,4 +60,23 @@ td.run-score {
 
 span.my-red {
 	text-color: red;
+}
+
+input#inspection_scores_score_item {
+	background-color: #07C30F;
+	font-size: 16px;
+	padding: 0 0;
+	text-align: center;
+	height: 18px;
+	margin: 2px;
+}
+
+::-webkit-input-placeholder {
+	color: black;
+	font-size: 16px;
+	height: 11px;
+}
+
+:-ms-input-placeholder {
+	color: black;
 }

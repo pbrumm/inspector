@@ -33,7 +33,8 @@ feature "scores for inspection total up" do
 			#page.find(".item_hiscore " + "item-#{@item_2.id}" + " small-6 columns").text ==  ("/ " + "#{@item_2.high_score}")
 			#page.should have_css("item_hiscore " + "item-#{@item_2.id}" + " small-6 columns", text: "/ " + "#{@item_2.high_score}")
 			#find(:css, "class=item_hiscore " + "item-#{@item_2.id}").text.should == "
-			fill_in find(:css, ".item_score" + ".item-#{@item_2.id}"), with: 8
+			find(:css, "input[id$= 'inspection_scores_score_item']").set(8)
+			#fill_in find(:css, ".item_score" + ".item-#{@item_2.id}"+".small-6"+".columns"), with: 8
 			click_button 'Create inspection'
 		}.to change(Score, :count).by(1)
 	end
