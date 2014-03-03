@@ -26,16 +26,14 @@ ActiveRecord::Schema.define(version: 20140226161043) do
   end
 
   create_table "items", force: true do |t|
-    t.string   "category"
-    t.string   "sub_category"
-    t.string   "name"
-    t.string   "explanation"
-    t.integer  "scoring"
-    t.integer  "high_score"
-    t.boolean  "all_or_nothing"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "survey_id"
+    t.string  "category"
+    t.string  "sub_category"
+    t.string  "name"
+    t.string  "explanation"
+    t.integer "scoring"
+    t.integer "high_score"
+    t.boolean "all_or_nothing"
+    t.integer "survey_id"
   end
 
   create_table "roles", force: true do |t|
