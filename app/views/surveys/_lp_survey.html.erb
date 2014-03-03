@@ -38,7 +38,7 @@
 <hr class="light">
 
 <%= form_for @inspection do |f| %>
-	<%= f.fields_for :scores do |builder| %>
+	
 	<% @items.group_by(&:category).each do |key, group| %>
 	<h2><%= "#{key}" %></h2>
 	<% group.group_by(&:sub_category).each do |ikey, igroup| %>
@@ -55,10 +55,12 @@
 	    		<div class="item_scoring">
 	    		<div class="row">
 		    		<div class="item_score item-<%= item.id %> small-6 columns">
+	<%= f.fields_for :scores do |builder| %>
 		    			<%= builder.text_field :score_item, placeholder: item.high_score %>
 		    			<%= builder.hidden_field :survey_id, value: @survey.id %>
 		    			<%= builder.hidden_field :item_id, as: :hidden, value: item.id %>
 		    			<%= builder.hidden_field :inspection_id, as: :hidden, value: params[:id] %>
+		    			<% end %>
 		    		</div>
 		    		<div class="item_hiscore item-<%= item.id %> small-6 columns">
 		    			/ <%= item.high_score %>
@@ -86,7 +88,7 @@
 		    		</div> 
 		    		
 		    	</div>
-	<% end %>
+
 	<% end %>
 	
 	<%= f.submit submit_text %>

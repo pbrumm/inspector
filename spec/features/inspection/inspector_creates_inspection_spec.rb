@@ -36,7 +36,7 @@ require 'spec_helper'
           page.should have_content("#{@site.name}")
           select("#{@survey.name}")
 
-          click_button 'Create inspection'
+          click_button 'Edit inspection'
         }.to change(Inspection, :count).by(1)
       end
     end
