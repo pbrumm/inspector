@@ -55,11 +55,12 @@
 	    		<div class="item_scoring">
 	    		<div class="row">
 		    		<div class="item_score item-<%= item.id %> small-6 columns">
-	<%= f.fields_for :scores do |builder| %>
+	<%= f.fields_for :scores, @inspection.scores do |builder| %>
 		    			<%= builder.text_field :score_item, placeholder: item.high_score %>
 		    			<%= builder.hidden_field :survey_id, value: @survey.id %>
 		    			<%= builder.hidden_field :item_id, as: :hidden, value: item.id %>
 		    			<%= builder.hidden_field :inspection_id, as: :hidden, value: params[:id] %>
+
 		    			<% end %>
 		    		</div>
 		    		<div class="item_hiscore item-<%= item.id %> small-6 columns">
@@ -78,10 +79,10 @@
 		    		</div>
 		    		<div class="item_scoring small-3 total columns">
 		    			<div class="row">
-		    				<div class="item_score small-6 columns">
+		    				<div class="item_score total small-6 columns">
 				    			XX
 				    		</div>
-				    		<div class="item_hiscore small-6 columns">
+				    		<div class="item_hiscore total small-6 columns">
 				    			XX
 				    		</div>
 		    			</div>

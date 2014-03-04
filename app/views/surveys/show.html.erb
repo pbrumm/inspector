@@ -13,11 +13,10 @@
 <hr class="light">
 
 
-	<%= render partial: 'lp_survey' %>
+	<%= render partial: 'lp_survey', locals: { submit_text: 'Edit inspection'} %>
 
 
 
 
 
 <h4><%= link_to 'New Item', new_item_path(survey_id: @survey.id) %></h4>
-
