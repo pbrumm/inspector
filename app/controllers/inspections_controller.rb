@@ -38,7 +38,7 @@ class InspectionsController < ApplicationController
   end
 
   def update
-    @inspection = Inspection.find(params[:id])
+    @inspection = find_inspection
 
     respond_to do |format|
       if @inspection.update_attributes(inspection_params)

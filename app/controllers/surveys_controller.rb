@@ -31,9 +31,28 @@ class SurveysController < ApplicationController
     @inspection = Inspection.find_or_create_by(site_id: @site.id) || Struct.new(:id, :site_id).new(id: 1, site_id: @site.id)
   end
 
+  def update
+    @survey = find_survey
+    respond_to do |format|
+      if @survey.update(survey_params)
+        format.html { redirect_to surveys_url, notice: 'Survey updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @survey.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def edit
+    @survey = find_survey
+    @site = Site.find(params[:site_id])
+    @items = Item.where(:id == @survey.id)
+  end
+
   private
   def survey_params
-    params.require(:survey).permit(:name, :active)
+    params.require(:survey).permit(:name, :active, scores_attributes: [:id, :item_id, :score_item, :survey_id])
   end
 
   def find_survey

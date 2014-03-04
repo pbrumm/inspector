@@ -37,12 +37,12 @@ feature "scores for inspection total up" do
 		#find(:css, "input[id$= 'inspection_scores_score_item']").set(8)
 		#fill_in find(:css, ".item_score" + ".item-#{@item_2.id}"+".small-6"+".columns"), with: 8
 		within(:css, ".item_score" + ".item-#{@item_2.id}"+".small-6"+".columns") do 				
-		  fill_in 'inspection_scores_score_item', with: MY_NUMBER
+		  fill_in 'survey_scores_score_item', with: MY_NUMBER
 		end
 
 		click_button 'Edit inspection'
 			#binding.pry
-		expect(Score.where(id: @item_2.id, inspection_id: @inspection.id)).to exist
+		expect(Score.where(item_id: @item_2.id, inspection_id: @inspection.id)).to exist
 
 	end
 	

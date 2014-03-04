@@ -27,7 +27,7 @@
 			<% @inspections.each do |inspection| %>
 			  <tr>
 
-			  	<td><%= link_to "#{Survey.find(inspection.survey_id).name}", inspection_path(inspection.id, :site_id => @site.id) %></td>
+			  	<td><%= link_to "#{Survey.find(inspection.survey_id).name}", edit_survey_path(Survey.find(inspection.survey_id), :site_id => @site.id) %></td>
 			  	<td><%= inspection.updated_at.strftime("%m/%d/%Y") %></td>
 			  </tr>
 			<% end %>

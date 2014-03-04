@@ -37,7 +37,7 @@
 <p class="all">*Note: All items in <span class="my-red">red</span> text constitute an "all or nothing" point scale</p>
 <hr class="light">
 
-<%= form_for @inspection do |f| %>
+<%= form_for @survey do |f| %>
 	
 	<% @items.group_by(&:category).each do |key, group| %>
 	<h2><%= "#{key}" %></h2>
@@ -55,7 +55,7 @@
 	    		<div class="item_scoring">
 	    		<div class="row">
 		    		<div class="item_score item-<%= item.id %> small-6 columns">
-	<%= f.fields_for :scores, @inspection.scores do |builder| %>
+	<%= f.fields_for :scores do |builder| %>
 		    			<%= builder.text_field :score_item, placeholder: item.high_score %>
 		    			<%= builder.hidden_field :survey_id, value: @survey.id %>
 		    			<%= builder.hidden_field :item_id, as: :hidden, value: item.id %>

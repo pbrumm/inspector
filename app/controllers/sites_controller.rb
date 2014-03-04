@@ -32,6 +32,7 @@ class SitesController < ApplicationController
   def show
     @site = find_site
     @inspections = Inspection.where(site_id: @site.id)
+    
     #params.require(:post).permit(:site_id).merge(site_id: @site.id)
   end
 
