@@ -26,7 +26,7 @@
 		<tr>
 			<td>@inspection.previous.date</td>
 			<td class="prev-score">@inspection.previous.score</td>
-			<td class="run-score">100</td>
+			<td class="run-score"><%= my_total(@items, :high_score) %></td>
 		</tr>
 		
 	</tbody>
@@ -75,13 +75,13 @@
 	    			<div class="item_text total small-9 large-9 columns">
 	    				Total:
 		    		</div>
-		    		<div class="item_scoring small-3 total columns">
+		    		<div class="item_scoring item_scoring_total small-3 total columns">
 		    			<div class="row">
-		    				<div class="item_score total small-6 columns">
+		    				<div class="item_score item_score_total small-6 columns">
 				    			XX
 				    		</div>
 				    		<div class="item_hiscore total small-6 columns">
-				    			XX
+				    			/ <%= my_total(igroup, :high_score) %>
 				    		</div>
 		    			</div>
 		    		</div> 
