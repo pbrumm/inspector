@@ -33,9 +33,10 @@ class SurveysController < ApplicationController
 
   def update
     @survey = find_survey
+    binding.pry
     respond_to do |format|
       if @survey.update(survey_params)
-        format.html { redirect_to surveys_url, notice: 'Survey updated.' }
+        format.html { redirect_to site_path(Site.find(params[:survey][:scores][:inspection_id])), notice: 'Survey updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -48,11 +49,12 @@ class SurveysController < ApplicationController
     @survey = find_survey
     @site = Site.find(params[:site_id])
     @items = Item.where(:id == @survey.id)
+    @inspection = Inspection.find(params[:inspection_id])
   end
 
   private
   def survey_params
-    params.require(:survey).permit(:name, :active, scores_attributes: [:id, :item_id, :score_item, :survey_id])
+    params.require(:survey).permit(:name, :active, items_attributes: [], scores_attributes: [:id, :item_id, :score_item, :survey_id, :inspection_id])
   end
 
   def find_survey
