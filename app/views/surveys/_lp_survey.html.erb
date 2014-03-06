@@ -43,6 +43,8 @@
 	<h2><%= "#{key}" %></h2>
 	<% group.group_by(&:sub_category).each do |ikey, igroup| %>
 	  <h3><%= "#{ikey}" %></h3>
+	  <div class="my_group">
+	  
 	  <% igroup.sort_by(&:sub_category).each do |item|  %>
 	    <div class="item_enclosure row">
 	    	<div class="item_text small-9 large-9 columns">
@@ -87,7 +89,7 @@
 		    		</div> 
 		    		
 		    	</div>
-
+    </div>
 	<% end %>
 
 	<%= f.submit submit_text %>

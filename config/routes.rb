@@ -3,12 +3,10 @@ Inspector::Application.routes.draw do
   devise_for :users, :controllers => {:registrations => "registrations"}
   resources :users
   resources :sites
-  resources :inspections do
-  	resources :scores
-  end
+  resources :inspections 
   
   resources :surveys 
   resources :items
-  
+  resources :scores
   
 end
