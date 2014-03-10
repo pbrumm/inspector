@@ -7,7 +7,7 @@ require 'spec_helper'
         :name => "LP test",
         :site_id => 3
       }
-      @survey = FactoryGirl.create(:survey, name: @attr[:name])
+      @survey_option = ["Loss Prevention", "Store Safety", "DEC Review"]
     end
 
     context "for a site" do
@@ -30,13 +30,11 @@ require 'spec_helper'
           click_button 'Log in'
           click_link 'Sites'
           click_link "#{@site.name}"
-          # click_link "#{@attr[:name]}"
-          # page.should have_content("#{@attr[:name]}")
-          click_link "New Inspection"
+         click_link "New Inspection"
           page.should have_content("#{@site.name}")
-          select("#{@survey.name}")
-
-          click_button 'Edit inspection'
+          select("#{@survey_option[0]}")
+#save_and_open_page
+          click_button 'Start inspection'
         }.to change(Inspection, :count).by(1)
       end
     end

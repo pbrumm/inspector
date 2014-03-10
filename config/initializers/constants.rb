@@ -1,1 +1,1 @@
-SURVEY_OPTIONS = ["LP Store Safety", "DEC Review"]
+SURVEY_OPTIONS = ["Loss Prevention", "Store Safety", "DEC Review"]

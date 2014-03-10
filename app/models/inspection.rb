@@ -6,4 +6,6 @@ class Inspection < ActiveRecord::Base
 
   has_many :scores
   accepts_nested_attributes_for :scores
+
+  validates_presence_of :name
 end

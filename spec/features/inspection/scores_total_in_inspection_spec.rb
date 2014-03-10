@@ -3,15 +3,15 @@ require 'spec_helper'
 feature "scores for inspection total up" do 
 
 	background do
-		SURVEY_OPTIONS = ["LP test Test", "number 2"]
+		SURVEY_OPTION = ["LP test Test", "number 2"]
 		MY_NUMBER = 8
 		@vip = FactoryGirl.create(:VIP)
 		@site = FactoryGirl.create(:site)
-		@survey = FactoryGirl.create(:survey, name: "#{SURVEY_OPTIONS[0]}", user_id: @vip.id, site_id: @site.id)
-		@inspection = FactoryGirl.create(:inspection, site_id: @site.id, user_id: @vip.id, survey_id: @survey.id)
-		@item_1 = FactoryGirl.create(:item, survey_id: 100)
-		@item_2 = FactoryGirl.create(:item, survey_id: @survey.id)
-		@item_3 = FactoryGirl.create(:item, survey_id: @survey.id)
+		#@survey = FactoryGirl.create(:survey, name: "#{SURVEY_OPTIONS[0]}", user_id: @vip.id, site_id: @site.id)
+		@inspection = FactoryGirl.create(:inspection, site_id: @site.id, user_id: @vip.id, name: "#{SURVEY_OPTIONS[0]}")
+		@item_1 = FactoryGirl.create(:item, name: "item 1")
+		@item_2 = FactoryGirl.create(:item, name: "item 2")
+		@item_3 = FactoryGirl.create(:item, name: "item 3")
 	end
 
 	scenario "VIP user enters score for item" do

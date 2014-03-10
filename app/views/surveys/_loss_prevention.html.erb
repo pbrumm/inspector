@@ -1,0 +1,203 @@
+<h1>1nt Quarter 2014 <%= @inspection.name %> Inspection</h1>
+
+<div class="survey-details row">
+	<p class="surv-left">For: <%= @site.name %>
+	<span class="surv-right">Manager: @site.user.name</span></p>
+	<p class="surv-left">Date: @inspection.modified_by <span class="surv-right">Inspected by: @Inspection.user_id.name</span></p>
+</div>
+
+<div class="mytable">
+
+
+<table class="surv-head">
+	<thead>
+		<tr>
+			<th>
+				Date
+			</th>
+			<th>
+			Previous</th>
+			<th>
+				Current</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<td>@inspection.previous.date</td>
+			<td class="prev-score">@inspection.previous.score</td>
+			<td class="run-score"><%# my_total(@items, :high_score) %></td>
+		</tr>
+		
+	</tbody>
+
+</table>
+</div>
+
+<p class="all">*Note: All items in <span class="my-red">red</span> text constitute an "all or nothing" point scale</p>
+<hr class="light">
+
+<%= form_for @inspection do |f| %>
+  <h2>Cash</h2>
+  <div class="my_group">
+  <h2>General</h2>
+  <h3>Policies and Procedures</h3>
+  
+    <div class="item_enclosure row">
+    	<div class="item_text small-9 columns">
+    		item.name and explanation
+    	</div>
+    	<div class="small-3 columns">
+	    	<div class="item_scoring">
+	    		<div class="row">
+		    		<div class="item_score small-6 columns">
+		    			<%= fields_for :scores do |builder| %>
+		    			<%= builder.text_field :score_item, placeholder: 'item.high_score' %>
+		    			<% end %>
+
+		    		</div>
+
+		    		<div class="item_hiscore small-6 columns">
+		    			/ 'item.high_score'
+		    		</div>
+		    	</div>
+		    </div>
+		  </div>
+    </div> <!--item_enclosure row	 -->
+  
+    <div class="item_enclosure row">
+    	<div class="item_text small-9 columns">
+    		GivEx and Smart Cards being tracked?
+    	</div>
+    	<div class="small-3 columns">
+	    	<div class="item_scoring">
+	    		<div class="row">
+		    		<div class="item_score small-6 columns">
+		    			<%= fields_for :scores do |builder| %>
+		    			<%= builder.text_field :score_item, placeholder: 'item.high_score' %>
+		    			<% end %>
+
+		    		</div>
+
+		    		<div class="item_hiscore small-6 columns">
+		    			/ '2'
+		    		</div>
+		    	</div>
+		    </div>
+		  </div>
+    </div> <!--item_enclosure row	 -->
+
+    <div class="item_enclosure row">
+    	<div class="item_text small-9 columns">
+    		Change Fund/Petty Cash (810) reviewed daily?
+    	</div>
+    	<div class="small-3 columns">
+	    	<div class="item_scoring">
+	    		<div class="row">
+		    		<div class="item_score small-6 columns">
+		    			<%= fields_for :scores do |builder| %>
+		    			<%= builder.text_field :score_item, placeholder: 'item.high_score' %>
+		    			<% end %>
+
+		    		</div>
+
+		    		<div class="item_hiscore small-6 columns">
+		    			/ 5
+		    		</div>
+		    	</div>
+		    </div>
+		  </div>
+    </div> <!--item_enclosure row	 -->
+
+    <div class="item_enclosure row">
+    	<div class="item_text small-9 columns">
+    		Safe Policy/check combination/cash drawer key/unclaimed payroll policy
+    	</div>
+    	<div class="small-3 columns">
+	    	<div class="item_scoring">
+	    		<div class="row">
+		    		<div class="item_score small-6 columns">
+		    			<%= fields_for :scores do |builder| %>
+		    			<%= builder.text_field :score_item, placeholder: 'item.high_score' %>
+		    			<% end %>
+
+		    		</div>
+
+		    		<div class="item_hiscore small-6 columns">
+		    			/ 5
+		    		</div>
+		    	</div>
+		    </div>
+		  </div>
+    </div> <!--item_enclosure row	 -->
+
+    <div class="item_enclosure row">
+    	<div class="item_text small-9 columns">
+    		Deposit Security Procedures sign off sheet signed/in personnel file?
+    	</div>
+    	<div class="small-3 columns">
+	    	<div class="item_scoring">
+	    		<div class="row">
+		    		<div class="item_score small-6 columns">
+		    			<%= fields_for :scores do |builder| %>
+		    			<%= builder.text_field :score_item, placeholder: 'item.high_score' %>
+		    			<% end %>
+
+		    		</div>
+
+		    		<div class="item_hiscore small-6 columns">
+		    			/ 4
+		    		</div>
+		    	</div>
+		    </div>
+		  </div>
+    </div> <!--item_enclosure row	 -->
+
+    <div class="item_enclosure row">
+    	<div class="item_text small-9 columns">
+    		Nightly Deposit Log completed daily and timely?
+    	</div>
+    	<div class="small-3 columns">
+	    	<div class="item_scoring">
+	    		<div class="row">
+		    		<div class="item_score small-6 columns">
+		    			<%= fields_for :scores do |builder| %>
+		    			<%= builder.text_field :score_item, placeholder: 'item.high_score' %>
+		    			<% end %>
+
+		    		</div>
+
+		    		<div class="item_hiscore small-6 columns">
+		    			/ 4
+		    		</div>
+		    	</div>
+		    </div>
+		  </div>
+    </div> <!--item_enclosure row	 -->
+
+
+
+
+  	
+  	<div class="item enclosure row"> 
+  		<div class="item_text total small-9 columns">
+  			Total:
+  		</div>
+  		<div class="item_scoring item_scoring_total small-3 total columns">
+  			<div class="row">
+  				<div class="item_score item_score_total small-6 columns">
+  		    	XX
+  	    	</div>
+  	    	<div class="item_hiscore total small-6 columns">
+					    			/ my_total
+				  </div>
+				</div>
+
+	  	</div>
+  	</div>
+
+
+  </div> <!-- my_group -->	
+  
+  <%= f.submit submit_text %>
+<% end %>

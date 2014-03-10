@@ -5,15 +5,15 @@ class InspectionsController < ApplicationController
     #@site = Site.find(params[:site_id])
     @inspection = Inspection.find(params[:id])
     @site = Site.find(@inspection.site_id)
-    @survey = Survey.find(@inspection.survey_id)
-    @items = Item.where(:id == @survey.id)
+    #@survey = Survey.find(@inspection.survey_id)
+    #@items = Item.where(:id == @survey.id)
  end
 
   def new
     @site = Site.find(params[:site_id])
     @inspection = Inspection.new
     @inspection.scores.build
-    @surveys = Survey.all
+    #@surveys = Survey.all
   end
 
   def create
@@ -32,8 +32,7 @@ class InspectionsController < ApplicationController
     end
   end
 
-  def index
-    
+  def index   
     @inspections = Inspection.all
   end
 
@@ -58,7 +57,7 @@ class InspectionsController < ApplicationController
   end
 
   def inspection_params
-    params.require(:inspection).permit(:name, :site_id, :survey_id, :user_id, scores_attributes: [:id, :item_id, :score_item, :survey_id])
+    params.require(:inspection).permit(:name, :site_id, :user_id, scores_attributes: [:id, :score_item])
   end
 
 end

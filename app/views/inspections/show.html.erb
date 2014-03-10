@@ -1,1 +1,1 @@
-<%= render partial: 'surveys/lp_survey', locals: {submit_text: "Edit inspection"} %>
+<%= render partial: ('surveys/' + "#{@inspection.name}".parameterize('_')), locals: {submit_text: "Edit inspection"} %>

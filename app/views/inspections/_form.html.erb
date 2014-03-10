@@ -1,10 +1,12 @@
 
 
 <%= simple_form_for(@inspection) do |f| %>
-<%= f.input :survey_id, collection: @surveys, include_blank: false  %>
+
+<%= f.input :name, collection: SURVEY_OPTIONS, include_blank: false %>
 
   <%= f.hidden_field :site_id, as: :hidden, value: params[:site_id] %>
   <%= f.hidden_field :user_id, as: :hidden, value: current_user.id %>
+
   <%= f.button :submit, submit_text %>
 <% end %>
 
