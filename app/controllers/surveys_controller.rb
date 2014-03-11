@@ -56,7 +56,7 @@ class SurveysController < ApplicationController
   def survey_params
     params.require(:survey).permit(
       :name, :active, items_attributes: [scores: [scores_attributes: [:id, :item_id, :score_item, :survey_id, :inspection_id]] 
-      )
+      ])
   end
 
   def find_survey
