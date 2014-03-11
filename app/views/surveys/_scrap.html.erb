@@ -1,0 +1,26 @@
+
+
+<%= form_for :survey do |f| %>
+  <%= fields_for :items do |item_builder| %>
+    <div class="item_enclosure row">
+    	<div class="item_text small-9 large-9 columns">
+    		<%= item_builder.text_field :name %> 
+
+    	</div>
+
+      <div class="small-3 columns">
+	    		<div class="item_scoring">
+		    		<div class="row">
+			    		<div class="item_score item-<%= item_builder.id %> small-6 columns">
+			    			builder goes here
+			    		</div>
+
+			    		<div class="item_hiscore item-<%= item_builder.id %> small-6 columns">
+		    			/ <%= item_builder.text_field :high_score %>
+			    		</div>
+			    	</div>
+		    	</div>		
+
+    </div> <!-- enclosure -->
+  <% end %> <!-- @survey.items -->
+<% end %>
