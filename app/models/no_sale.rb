@@ -1,0 +1,2 @@
+class NoSale < Score
+end
