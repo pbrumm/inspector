@@ -1,7 +1,12 @@
+
+<%= will_paginate @items %>
+
+<% for item in @items %>
+
 <%= form_for(@general) do |f| %>
     <div class="item_enclosure row">
     	<div class="item_text small-9 large-9 columns">
-    		item text here
+    		item.name
     	</div>
     </div>
 
@@ -19,4 +24,5 @@
 
 
   <%= f.button :submit, submit_text %>
+<% end %>
 <% end %>

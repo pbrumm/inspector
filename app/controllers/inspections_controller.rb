@@ -5,8 +5,9 @@ class InspectionsController < ApplicationController
     #@site = Site.find(params[:site_id])
     @inspection = Inspection.find(params[:id])
     @site = Site.find(@inspection.site_id)
-    #@survey = Survey.find(@inspection.survey_id)
-    #@items = Item.where(:id == @survey.id)
+    @survey = Survey.find(@inspection.survey_id)
+    @items = Item.where(:id == @survey.id).order("sub_category").page(params[:page])
+
  end
 
   def new

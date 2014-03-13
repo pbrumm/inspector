@@ -14,6 +14,7 @@ gem 'rolify'
 gem 'sendgrid'
 gem 'simple_form'
 gem 'pry'
+gem 'will_paginate'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
