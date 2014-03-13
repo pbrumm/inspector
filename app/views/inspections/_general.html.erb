@@ -1,0 +1,22 @@
+<%= form_for(@general) do |f| %>
+    <div class="item_enclosure row">
+    	<div class="item_text small-9 large-9 columns">
+    		item text here
+    	</div>
+    </div>
+
+    <div class="small-3 columns">
+    	<div class="item_scoring">
+    		<div class="row">
+    			<div class="item_score item-<%= item_builder.id %> small-6 columns">
+    				<%= f.input :score_item %>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+
+
+
+
+  <%= f.button :submit, submit_text %>
+<% end %>

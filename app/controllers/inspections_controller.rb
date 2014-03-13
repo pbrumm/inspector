@@ -10,20 +10,20 @@ class InspectionsController < ApplicationController
  end
 
   def new
-    @site = Site.find(params[:site_id])
+    @site = Site.find(params[:site_id]) # || Site.find(parms[:inspection][:site_id])
     @inspection = Inspection.new
-    @inspection.scores.build
-    #@surveys = Survey.all
+    #@inspection.scores.build
+    @surveys = Survey.all
   end
 
   def create
-    #@site = Site.find(params[:inspection][:site_id])
+    @site = Site.find(params[:inspection][:site_id])
     @inspection = Inspection.new(inspection_params)
 
     respond_to do |format|
       if @inspection.save
         #format.html { redirect_to site_inspection_path(@site, @inspection), notice: 'Inspection was created'}
-        format.html { redirect_to @inspection, notice: 'Inspection was created.' }
+        format.html { redirect_to inspection_path(@inspection), notice: 'Inspection was created.' }
         format.json { render action: 'show', status: :created, location: @inspection }
       else
         format.html { render action: 'new' }
@@ -34,6 +34,7 @@ class InspectionsController < ApplicationController
 
   def index   
     @inspections = Inspection.all
+    @site = Site.find(params[:site_id]) || Site.find(parms[:inspection][:site_id])
   end
 
   def update
@@ -57,7 +58,7 @@ class InspectionsController < ApplicationController
   end
 
   def inspection_params
-    params.require(:inspection).permit(:name, :site_id, :user_id, scores_attributes: [:id, :score_item])
+    params.require(:inspection).permit(:name, :site_id, :user_id, :survey_id, scores_attributes: [:id, :score_item])
   end
 
 end
