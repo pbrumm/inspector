@@ -3,20 +3,24 @@
     	<div class="item_text small-9 large-9 columns">
     		item text here
     	</div>
+        <div class="small-3 columns">
+            <div class="item_scoring">
+                <div class="row">
+                    <div class="item_score item- item_builder.id  small-6 columns">
+                        <%= f.text_field :score_item %>
+                        <%= f.hidden_field :inspection_id,  value: @inspection.id %>
+                        <%= f.hidden_field :type, value: "General" %>
+                        <%= f.hidden_field :item_id, value: 0 %>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="small-3 columns">
-    	<div class="item_scoring">
-    		<div class="row">
-    			<div class="item_score item-<%= item_builder.id %> small-6 columns">
-    				<%= f.input :score_item %>
-    			</div>
-    		</div>
-    	</div>
-    </div>
 
 
 
 
-  <%= f.button :submit, submit_text %>
+
+  <%= f.submit submit_text %>
 <% end %>

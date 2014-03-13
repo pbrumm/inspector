@@ -8,5 +8,7 @@ Inspector::Application.routes.draw do
   resources :surveys 
   resources :items
   resources :scores
+
+  resources :generals, controller: 'scores', type: 'General'
   
 end

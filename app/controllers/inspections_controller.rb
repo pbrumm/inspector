@@ -7,6 +7,7 @@ class InspectionsController < ApplicationController
     @site = Site.find(@inspection.site_id)
     #@survey = Survey.find(@inspection.survey_id)
     #@items = Item.where(:id == @survey.id)
+    @general = General.new
  end
 
   def new
