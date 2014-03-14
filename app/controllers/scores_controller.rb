@@ -12,7 +12,8 @@ class ScoresController < ApplicationController
 		@score = Score.new(score_params)
     @inspection = Inspection.find(@score.inspection_id)
 		if @score.save
-			redirect_to inspection_path(@inspection), notice: "Score was accepted."
+			binding.pry
+			redirect_to inspection_path(@inspection, page: params[:page]), notice: "Score was accepted."
     else
     	render action: 'new'
 		end

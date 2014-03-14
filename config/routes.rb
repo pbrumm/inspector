@@ -9,8 +9,8 @@ Inspector::Application.routes.draw do
   resources :items
   resources :scores
 
-  resources :generals, controller: 'scores', type: "General"
-  resources :videos, controller: 'scores', type: "Video"
-  resources :voids, controller: 'scores', type: "Void"
+  # resources :generals, controller: 'scores', type: "General"
+  # resources :videos, controller: 'scores', type: "Video"
+  # resources :voids, controller: 'scores', type: "Void"
   
 end
