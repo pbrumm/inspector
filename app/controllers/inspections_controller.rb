@@ -7,7 +7,7 @@ class InspectionsController < ApplicationController
     @site = Site.find(@inspection.site_id)
     @survey = Survey.find(@inspection.survey_id)
     @items = Item.where(:id == @survey.id).order("sub_category").page(params[:page])
-
+    @general = General.new
  end
 
   def new

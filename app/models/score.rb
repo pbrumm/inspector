@@ -5,10 +5,7 @@ class Score < ActiveRecord::Base
 	scope :voids, -> { where(type: 'Void') }
 	scope :no_sales, -> { where(type: 'NoSale') }
 	scope :general, -> { where(type: 'General') }
-
-	def talk
-		raise 'Abstract Method'
-	end
+end
 
   class << self
     def types

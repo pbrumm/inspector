@@ -1,0 +1,21 @@
+<%= form_for @survey do |f| %>
+  <%= fields_for :items do |i| %>
+    <div class="item_enclosure row">
+    	<div class="item_text small-9 columns">
+    		<%= i.text_field :name %>
+    	</div> <!-- item_text -->
+    	<div class="small-3 columns">
+    		<div class="item_scoring">
+    			<div class="row">
+    				<div class="item_score small-6 columns" >
+    					<%= f.fields_for :scores do |builder| %>
+    					  <%= builder.text_field :score_item %>
+		    			  <%= builder.hidden_field :inspection_id, as: :hidden, value: params[:inspection_id] %>
+    					<% end %>
+    				</div>
+    			</div>
+    		</div> <!-- item_scoring -->
+    	</div> <!-- small-3 -->
+    </div> <!-- item enclosure -->
+  <% end %> <!-- items -->
+<% end %> <!-- survey -->
