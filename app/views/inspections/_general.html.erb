@@ -1,10 +1,11 @@
 
 <%= will_paginate @items %>
 
-<% for item in @items %>
+
 
 <%= form_for(@general) do |f| %>
-    <h3><%= "#{item.category}" %></h3>
+<% for item in @items %>    
+  <h3><%= "#{item.sub_category}" %></h3>
     <div class="item_enclosure row">
     	<div class="item_text small-9 large-9 columns">
     		<%= "#{item.name}" %>
@@ -13,7 +14,14 @@
             <div class="item_scoring">
                 <div class="row">
                     <div class="item_score item-<%= item.id %> small-6 columns">
-                        <%= f.text_field :score_item %>
+                        <%= f.text_field :score_item, placeholder: item.high_score %>
+                        <%= f.hidden_field :inspection_id, value: params[:id] %>
+                        <%= f.hidden_field :item_id, value: item.id %>
+                        <%= f.hidden_field :type, value: 'General' %>
+                    </div>
+
+                    <div class="item_hiscore item-<%= item.id %> small-6 columns">
+                        / <%= item.high_score %>
                     </div>
                 </div>
             </div>
@@ -24,7 +32,7 @@
 
 
 
-
-  <%= f.submit submit_text %>
 <% end %>
+  <%= f.submit submit_text %>
+
 <% end %>

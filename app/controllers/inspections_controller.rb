@@ -19,12 +19,14 @@ class InspectionsController < ApplicationController
 
   def create
     @site = Site.find(params[:inspection][:site_id])
-    @inspection = Inspection.new(inspection_params)
-
+    @inspectionNew = Inspection.new(inspection_params)
+    @inspection = Inspection.find(params[:id])
+    binding.pry
     respond_to do |format|
       if @inspection.save
         #format.html { redirect_to site_inspection_path(@site, @inspection), notice: 'Inspection was created'}
-        format.html { redirect_to inspection_path(@inspection), notice: 'Inspection was created.' }
+        
+        format.html { redirect_to inspection_edit_path(@inspection, page: params[:page]), notice: 'Inspection was created.' }
         format.json { render action: 'show', status: :created, location: @inspection }
       else
         format.html { render action: 'new' }
@@ -59,7 +61,7 @@ class InspectionsController < ApplicationController
   end
 
   def inspection_params
-    params.require(:inspection).permit(:name, :site_id, :user_id, :survey_id, scores_attributes: [:id, :score_item])
+    params.require(:inspection).permit(:name, :site_id, :user_id, :item_id, scores_attributes: [:id, :score_item, :item_id])
   end
 
 end
