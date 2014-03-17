@@ -3,8 +3,8 @@
 
 
 
-<%= form_for :score do |f| %>
-
+<%= form_for @inspection do |f| %>
+<%= f.hidden_field :survey_id, value: @inspection.survey_id %>
 
 <%# @items.each do |item| %>
 <% for item in @items %>
@@ -21,11 +21,10 @@
             <div class="item_scoring">
                 <div class="row">
                     <div class="item_score item-<%= item.id %> small-6 columns">
-                        
-                        <%= f.text_field :score_item, placeholder: item.high_score %>
-                        <%= f.hidden_field :inspection_id, value: params[:id] %>
-                        <%= f.hidden_field :item_id, value: item.id %>
-                        
+                        <%= fields_for @score do |builder| %>
+                        <%= builder.text_field :score_item, placeholder: item.high_score %>
+                        <%= builder.hidden_field :item_id, value: item.id %>
+                        <% end %>
                     </div>
 
                     <div class="item_hiscore item-<%= item.id %> small-6 columns">

@@ -8,6 +8,7 @@ class InspectionsController < ApplicationController
     @survey = Survey.find(@inspection.survey_id)
     @items = Item.where(:id == @survey.id).order("sub_category").page(params[:page]).per_page(1)
     @general = General.new
+    @score = @inspection.scores.build
  end
 
   def new
@@ -24,7 +25,7 @@ class InspectionsController < ApplicationController
     respond_to do |format|
       if @inspection.save
         #format.html { redirect_to site_inspection_path(@site, @inspection), notice: 'Inspection was created'}
-        binding.pry
+        
         format.html { redirect_to inspection_path(@inspection, page: params[:page]), notice: 'Inspection was created.' }
         format.json { render action: 'show', status: :created, location: @inspection }
       else
@@ -49,6 +50,7 @@ class InspectionsController < ApplicationController
 
     respond_to do |format|
       if @inspection.update_attributes(inspection_params)
+        binding.pry
         format.html {redirect_to @inspection, notice: 'Inspection was updated'}
         format.json {head :no_content}
       else
@@ -65,7 +67,7 @@ class InspectionsController < ApplicationController
   end
 
   def inspection_params
-    params.require(:inspection).permit(:name, :site_id, :user_id, :survey_id, scores_attributes: [:id, :score_item])
+    params.require(:inspection).permit(:name, :site_id, :user_id, :survey_id, scores_attributes: [:id, :score_item, :item_id])
   end
 
 end
