@@ -26,7 +26,7 @@ class ScoresController < ApplicationController
 	private
 
   def score_params
-    params.require(:general).permit(:score_item, :type, :inspection_id, :item_id)
+    params.require(:score).permit(:score_item, :inspection_id, :item_id)
   end
 
 end
