@@ -13,7 +13,11 @@ class ScoresController < ApplicationController
     @inspection = Inspection.find(@score.inspection_id)
 		if @score.save
 			binding.pry
-			redirect_to inspection_path(@inspection, page: params[:page]), notice: "Score was accepted."
+			respond_to do |format|
+			format.html {redirect_to inspection_path(@inspection, page: params[:survey_id]), notice: "Scorex was accepted."}
+			format.js
+			end
+			
     else
     	render action: 'new'
 		end
@@ -26,7 +30,7 @@ class ScoresController < ApplicationController
 	private
 
   def score_params
-    params.require(:score).permit(:score_item, :inspection_id, :item_id)
+    params.require(:score).permit(:score_item, :inspection_id, :item_id, :page, :survey_id)
   end
 
 end
