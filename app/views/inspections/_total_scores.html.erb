@@ -21,7 +21,7 @@
             <div class="item_scoring">
                 <div class="row">
                     <div class="item_score item-<%= item.id %> small-6 columns">
-                        <%= form_for @score do |f| %>
+                        <%= form_for @score, remote: true do |f| %>
                         <%= f.text_field :score_item, placeholder: item.high_score %>
                         <%= f.hidden_field :item_id, value: item.id %>
                         <%= f.hidden_field :inspection_id, value: params[:id] %>
