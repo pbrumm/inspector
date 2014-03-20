@@ -13,7 +13,7 @@ div.item_scoring {
 div.item_score {
 	background-color: #05D116;
 	border-right: 1px solid #000;
-	height: 22px;
+	height: 20px;
 }
 
 div.high_score {
@@ -79,4 +79,14 @@ input#inspection_scores_score_item {
 
 :-ms-input-placeholder {
 	color: black;
+}
+
+div.item_score input {
+	text-align: center;
+	background-color: inherit;
+	height: 22px;
+}
+
+div.item_scoring .row {
+  margin-left: 0px;
 }

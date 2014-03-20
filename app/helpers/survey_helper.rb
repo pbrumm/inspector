@@ -6,4 +6,8 @@ module SurveyHelper
       sum + my_obj }
 	end
 
+	def my_action(item)
+		item ? :put : :post
+	end
+
 end
