@@ -1,12 +1,6 @@
 
 <%= will_paginate @items %>
 
-
-
-
-
-
-<%# @items.each do |item| %>
 <% for item in @items %>
   <h3><%= "#{item.sub_category}" %></h3>
 
@@ -25,7 +19,6 @@
                         <%= f.text_field :score_item, placeholder: item.high_score %>
                         <%= f.hidden_field :item_id, value: item.id %>
                         <%= f.hidden_field :inspection_id, value: params[:id] %>
-                        <%= f.hidden_field :survey_id, value: params[:page]%>
                         <%= f.submit submit_text %>
                         <% end %>
                     </div>

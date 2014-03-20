@@ -12,9 +12,9 @@ class ScoresController < ApplicationController
 		@score = Score.new(score_params)
     @inspection = Inspection.find(@score.inspection_id)
 		if @score.save
-			binding.pry
+			#binding.pry
 			respond_to do |format|
-			format.html {redirect_to inspection_path(@inspection, page: params[:survey_id]), notice: "Scorex was accepted."}
+			format.html {redirect_to inspection_path(@inspection, page: @score.survey_id), notice: "Scorex was accepted."}
 			format.js
 			end
 			
