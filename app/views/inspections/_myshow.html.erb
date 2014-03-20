@@ -28,7 +28,7 @@
 		<tr>
 			<td>@inspection.previous.date</td>
 			<td class="prev-score">@inspection.previous.score</td>
-			<td class="run-score"><%# my_total(@items, :high_score) %></td>
+			<td class="run-score"><%= my_total(@inspection.scores, :score_item) %></td>
 		</tr>
 		
 	</tbody>

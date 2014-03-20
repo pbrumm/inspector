@@ -1,5 +1,8 @@
 class InspectionsController < ApplicationController
 
+  include SurveyHelper
+ 
+
   def show
    #binding.pry
     #@site = Site.find(params[:site_id])
@@ -9,7 +12,7 @@ class InspectionsController < ApplicationController
     @items = Item.where(:id == @survey.id).order("sub_category").page(params[:page]).per_page(1)
     @general = General.new
     @score = @inspection.scores.build
- end
+  end
 
   def new
     @site = Site.find(params[:site_id]) # || Site.find(parms[:inspection][:site_id])
