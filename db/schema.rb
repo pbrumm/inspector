@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140226161043) do
+ActiveRecord::Schema.define(version: 20140314175418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,14 +26,16 @@ ActiveRecord::Schema.define(version: 20140226161043) do
   end
 
   create_table "items", force: true do |t|
-    t.string  "category"
-    t.string  "sub_category"
-    t.string  "name"
-    t.string  "explanation"
-    t.integer "scoring"
-    t.integer "high_score"
-    t.boolean "all_or_nothing"
-    t.integer "survey_id"
+    t.string   "category"
+    t.string   "sub_category"
+    t.string   "name"
+    t.string   "explanation"
+    t.integer  "scoring"
+    t.integer  "high_score"
+    t.boolean  "all_or_nothing"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "survey_id"
   end
 
   create_table "roles", force: true do |t|
@@ -54,6 +56,12 @@ ActiveRecord::Schema.define(version: 20140226161043) do
     t.integer  "item_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "date"
+    t.time     "time"
+    t.string   "cashier"
+    t.string   "reg"
+    t.text     "problem"
+    t.string   "amount"
   end
 
   create_table "sites", force: true do |t|

@@ -1,4 +1,4 @@
-<h1>1nt Quarter 2014 <%= @survey.name %> Inspection</h1>
+<h1>1nt Quarter 2014 <%= @inspection.name %> Inspection</h1>
 
 <div class="survey-details row">
 	<p class="surv-left">For: <%= @site.name %>
@@ -26,7 +26,7 @@
 		<tr>
 			<td>@inspection.previous.date</td>
 			<td class="prev-score">@inspection.previous.score</td>
-			<td class="run-score"><%= my_total(@items, :high_score) %></td>
+			<td class="run-score"><%# my_total(@items, :high_score) %></td>
 		</tr>
 		
 	</tbody>
