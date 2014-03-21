@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
 	def new
-	  @survey = find_survey
+	  @survey = Survey.find(params[:survey_id])
 	  @item = Item.new
 
 	end
