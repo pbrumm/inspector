@@ -6,6 +6,6 @@
   <%= f.input :scoring %>
   <%= f.input :high_score %>
   <%= f.input :all_or_nothing, as: :boolean, checked_value:true, unchecked_value: false %>
-  <%= f.hidden_field :survey_id, as: :hidden, value: params[:survey_id] %>
+  <%= f.hidden_field :survey_id, as: :hidden, value: params[:survey_id] || @item.survey_id %>
   <%= f.button :submit, submit_text %>
 <% end %>

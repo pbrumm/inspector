@@ -36,6 +36,20 @@ class ItemsController < ApplicationController
 		@survey = find_survey
 	end
 
+	def update
+		@item = find_item
+		binding.pry
+		respond_to do |format|
+			if @item.update_attributes(item_params)
+				format.html {redirect_to @item, notice: 'Item was updated.'}
+				format.json {head :no_content}
+			else
+				format.html {render action: 'edit'}
+				format.json {render json: @item.errors, status: :unproccessable_entity}
+		  end
+	  end
+	end
+
   private
 
   def item_params
