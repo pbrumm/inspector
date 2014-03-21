@@ -33,7 +33,7 @@ class SurveysController < ApplicationController
 
   def update
     @survey = find_survey
-    binding.pry
+
     respond_to do |format|
       if @survey.update(survey_params)
         format.html { redirect_to site_path(Site.find(params[:survey][:scores][:inspection_id])), notice: 'Survey updated.' }
@@ -55,8 +55,7 @@ class SurveysController < ApplicationController
   private
   def survey_params
     params.require(:survey).permit(
-      :name, :active, items_attributes: [:scores, scores_attributes: [:id, :item_id, :score_item, :survey_id, :inspection_id]] 
-      ])
+      :name, :active, items_attributes: [:scores, scores_attributes: [:id, :item_id, :score_item, :survey_id, :inspection_id]])
   end
 
   def find_survey
@@ -71,6 +70,5 @@ class SurveysController < ApplicationController
       
     end
   end
-
 
 end
