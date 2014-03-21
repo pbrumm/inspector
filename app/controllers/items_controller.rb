@@ -47,7 +47,7 @@ class ItemsController < ApplicationController
   end
 
   def find_survey
-  	Survey.find(params[:survey_id])
+  	Survey.find(@item.survey_id)
   end
 
 end
