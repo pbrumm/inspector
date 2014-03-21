@@ -31,10 +31,18 @@ class ItemsController < ApplicationController
 		@items = Item.all
 	end
 
+	def edit
+		@item = find_item
+	end
+
   private
 
   def item_params
   	params.require(:item).permit(:name, :survey_id, :category, :sub_category, :explanation, :scoring, :high_score, :all_or_nothing)
+  end
+
+  def find_item
+  	Item.find(params[:id])
   end
 
 end
