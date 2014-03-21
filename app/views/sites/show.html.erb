@@ -27,7 +27,7 @@
 			<% @inspections.each do |inspection| %>
 			  <tr>
 
-			  	<td><%= link_to "#{Inspection.find(inspection.id).name}", inspection_path,  site_id: @site.id %></td>
+			  	<td><%= link_to "#{inspection.name}", inspection_path(inspection.id) %></td>
 			  	<td><%= inspection.updated_at.strftime("%m/%d/%Y") %></td>
 			  </tr>
 			<% end %>
