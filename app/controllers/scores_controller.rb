@@ -14,7 +14,7 @@ class ScoresController < ApplicationController
 		if @score.save
 			#binding.pry
 			respond_to do |format|
-			format.html {redirect_to inspection_path(@inspection, page: @score.survey_id), notice: "Scorex was accepted."}
+			format.html {redirect_to inspection_path(@inspection, page: @score.survey_id), notice: "Score was accepted."}
 			format.js
 			end
 			
