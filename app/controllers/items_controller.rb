@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
 	def new
-	  @survey = Survey.find(params[:survey_id])
+	  @survey = find_survey
 	  @item = Item.new
 
 	end
@@ -22,7 +22,7 @@ class ItemsController < ApplicationController
 	end
 
 	def show
-	  @item = Item.find(params[:id])	  
+	  @item = find_item  
 	  @survey = Survey.find(@item.survey_id)
 
 	end
@@ -33,6 +33,7 @@ class ItemsController < ApplicationController
 
 	def edit
 		@item = find_item
+		@survey = find_survey
 	end
 
   private
@@ -43,6 +44,10 @@ class ItemsController < ApplicationController
 
   def find_item
   	Item.find(params[:id])
+  end
+
+  def find_survey
+  	Survey.find(params[:survey_id])
   end
 
 end
