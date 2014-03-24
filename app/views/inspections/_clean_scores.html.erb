@@ -1,0 +1,59 @@
+
+
+
+  <% @items.group_by(&:category).each do |key, group| %>
+  	<% group.group_by(&:sub_category).each do |ikey, igroup| %>
+  		<h3><%= "#{ikey}" %></h3>
+  		<div class="my_group">
+        <% igroup.sort_by(&:sub_category).each do |item| %>
+          <div class="item_enclosure row">
+            <div class="item_text small-9 large-9 columns">
+            	<%= item.name %> 
+	    		    <% if item.explanation? %>
+	    		      </ br><%= simple_format h(item.explanation) %>
+	    		    <% end %>
+            </div> 
+	          <div class="small-3 columns">
+		    		  <div class="item_scoring">
+		    		    <div class="row">
+			    		    <%= form_for @score do |f| %>
+				    		    <div class="item_score item-<%= item.id %> small-4 columns"> 
+				    		    	<%= f.text_field :score_item, placeholder: item.high_score %>
+				    		    	<%= f.hidden_field :inspection_id, as: :hidden, value: params[:id] %>
+				    		    	<%= f.hidden_field :item_id, as: :hidden, value: item.id %>
+		                </div>
+		                <div class="item_hiscore item-<%= item.id %> small-4 columns">
+				    			    / <%= item.high_score %>
+				    		    </div>
+				    		    <div class="item_act small-4">
+				    		    	<%= f.submit %>
+				    		    </div>			    		    	
+			    		    <% end %>
+
+	              </div>
+	            </div>
+	          </div> 
+          </div>
+
+     
+        <% end %>
+        
+        <div class="item enclosure row">
+           <div class="item_text total small-9 large-9 columns">
+           	Total:
+           </div>
+           <div class="item_scoring item_scoring_total small-3 total columns">
+		    			<div class="row">
+		    				<div class="item_score item_score_total small-6 columns">
+		    					xx
+		    				</div>
+		    				<div class="item_hiscore total small-6 columns">
+				    			/ <%= my_total(igroup, :high_score) %>
+				    		</div>
+		    			</div>
+		    		</div>
+        </div>
+
+  		</div>
+  	<% end %>
+  <% end %>

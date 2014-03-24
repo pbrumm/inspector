@@ -29,7 +29,7 @@ class InspectionsController < ApplicationController
       if @inspection.save
         #format.html { redirect_to site_inspection_path(@site, @inspection), notice: 'Inspection was created'}
         
-        format.html { redirect_to inspection_path(@inspection, page: params[:page]), notice: 'Inspection was created.' }
+        format.html { redirect_to edit_inspection_path(@inspection), notice: 'Inspection was created.' }
         format.json { render action: 'show', status: :created, location: @inspection }
       else
         format.html { render action: 'new' }
@@ -45,7 +45,9 @@ class InspectionsController < ApplicationController
 
   def edit
     @inspection = Inspection.find(params[:id])
-    @items = Item.where(id: @inspection.id)
+    @site = Site.find(@inspection.site_id)
+    @items = Item.where(survey_id: @inspection.survey_id)
+    @score = Score.find(inspection_id: @inspection.id, item_id: @item.id)
   end
 
   def update
