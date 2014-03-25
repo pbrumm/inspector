@@ -90,3 +90,24 @@ div.item_score input {
 div.item_scoring .row {
   margin-left: 0px;
 }
+
+div.item_act {
+	position: relative;
+	height: 22px;
+	right: 16px;
+	
+	background-color: blue;
+	
+}
+
+div.item_act a {
+	display: block;
+	width: 100%;
+	position: absolute;
+	background-image: url('empty.gif');
+	z-index: 1;
+}
+
+div.redbox {
+	border: 1px solid red;
+}

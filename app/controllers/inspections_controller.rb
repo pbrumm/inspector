@@ -54,9 +54,10 @@ class InspectionsController < ApplicationController
 
     respond_to do |format|
       if @inspection.update_attributes(inspection_params)
-        binding.pry
-        format.html {redirect_to @inspection, notice: 'Inspection was updated'}
+
+        format.html {redirect_to edit_inspection_path(@inspection), notice: 'Score was updated'}
         format.json {head :no_content}
+        format.js
       else
         format.html { render action: 'edit'}
         format.json { render json: @inspection.errors, status: :unprocessable_entity }
