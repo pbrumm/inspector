@@ -47,7 +47,6 @@ class InspectionsController < ApplicationController
     @inspection = Inspection.find(params[:id])
     @site = Site.find(@inspection.site_id)
     @items = Item.where(survey_id: @inspection.survey_id)
-    @score = Score.find(inspection_id: @inspection.id, item_id: @item.id)
   end
 
   def update
