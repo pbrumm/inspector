@@ -7,8 +7,8 @@ feature "scores for inspection total up" do
 		MY_NUMBER = 8
 		@vip = FactoryGirl.create(:VIP)
 		@site = FactoryGirl.create(:site)
-		#@survey = FactoryGirl.create(:survey, name: "#{SURVEY_OPTIONS[0]}", user_id: @vip.id, site_id: @site.id)
-		@inspection = FactoryGirl.create(:inspection, site_id: @site.id, user_id: @vip.id, name: "#{SURVEY_OPTIONS[0]}")
+		@survey = FactoryGirl.create(:survey, name: "#{SURVEY_OPTIONS[0]}", user_id: @vip.id)
+		@inspection = FactoryGirl.create(:inspection, site_id: @site.id, user_id: @vip.id, name: "#{SURVEY_OPTIONS[0]}", survey_id: @survey.id)
 		@item_1 = FactoryGirl.create(:item, name: "item 1")
 		@item_2 = FactoryGirl.create(:item, name: "item 2")
 		@item_3 = FactoryGirl.create(:item, name: "item 3")
@@ -25,19 +25,19 @@ feature "scores for inspection total up" do
 		click_link 'New Inspection'
 		select("#{@survey.name}")
 		click_button 'Start inspection'
-
+save_and_open_page
 		page.should have_content("#{@item_2.sub_category}")
 		page.should have_content("#{@item_2.name}")
 		page.should have_content("#{@item_3.name}")
-		page.find(:css, ".item_hiscore"+".item-#{@item_2.id}"+".small-6"+".columns", :visible => true).text == ("/ " + "#{@item_2.high_score}")
+		page.find(:css, ".item_hiscore"+".item-#{@item_2.id}"+".small-4"+".columns", :visible => true).text == ("/ " + "#{@item_2.high_score}")
 		#page.find(:xpath, //div[contains(@class, "item-#{@item_2.id}")]).text == ("/ " + "#{@item_2.high_score}")
 		#page.find(".item_hiscore " + "item-#{@item_2.id}" + " small-6 columns").text ==  ("/ " + "#{@item_2.high_score}")
 		#page.should have_css("item_hiscore " + "item-#{@item_2.id}" + " small-6 columns", text: "/ " + "#{@item_2.high_score}")
 		#find(:css, "class=item_hiscore " + "item-#{@item_2.id}").text.should == "
 		#find(:css, "input[id$= 'inspection_scores_score_item']").set(8)
 		#fill_in find(:css, ".item_score" + ".item-#{@item_2.id}"+".small-6"+".columns"), with: 8
-		within(:css, ".item_score" + ".item-#{@item_2.id}"+".small-6"+".columns") do 				
-		  fill_in 'survey_scores_score_item', with: MY_NUMBER
+		within(:css, ".item_score" + ".item-#{@item_2.id}"+".small-4"+".columns") do 				
+		  fill_in 'score_score_item', with: MY_NUMBER
 		end
 
 		click_button 'Edit inspection'

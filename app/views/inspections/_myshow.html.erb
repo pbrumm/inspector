@@ -28,14 +28,15 @@
 		<tr>
 			<td>@inspection.previous.date</td>
 			<td class="prev-score">@inspection.previous.score</td>
-			<td class="run-score"><%= my_total(@inspection.scores, :score_item) %></td>
+      <td class="run-score"><%= my_total(@inspection.scores, :score_item) %></td>
+
 		</tr>
 		
 	</tbody>
 
 </table>
 </div>
-
+			<%= content_tag :div, class: 'run-score-data', data: {current_total: my_total(@inspection.scores, :score_item), iid: params[:id]} do %> <% end %>
 <p class="all">*Note: All items in <span class="my-red">red</span> text constitute an "all or nothing" point scale</p>
 <hr class="light">
 

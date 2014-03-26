@@ -28,11 +28,11 @@ require 'spec_helper'
 
           context "and has items" do
             background do
-              @item1 = FactoryGirl.create(:item, category: "strange", sub_category: "one")
-              @item2 = FactoryGirl.create(:item, category: "sordid", sub_category: "one")
-              @item3 = FactoryGirl.create(:item, category: "sordid", sub_category: "two")
-              @item4 = FactoryGirl.create(:item, category: "strange", sub_category: "two")
-              @item5 = FactoryGirl.create(:item, category: "strange", sub_category: "three")
+              @item1 = FactoryGirl.create(:item, category: "strange", sub_category: "one", survey_id: @survey.id)
+              @item2 = FactoryGirl.create(:item, category: "sordid", sub_category: "one", survey_id: @survey.id)
+              @item3 = FactoryGirl.create(:item, category: "sordid", sub_category: "two", survey_id: @survey.id)
+              @item4 = FactoryGirl.create(:item, category: "strange", sub_category: "two", survey_id: @survey.id)
+              @item5 = FactoryGirl.create(:item, category: "strange", sub_category: "three", survey_id: @survey.id)
             end
 
             scenario "can create a new inspection" do
@@ -44,15 +44,20 @@ require 'spec_helper'
                 click_button 'Log in'
                 click_link 'Sites'
                 click_link "#{@site.name}"
+
                click_link "New Inspection"
      # save_and_open_page
+
                 select("#{@survey_option[0]}")
                 click_button 'Start inspection'
-              }.to change(Inspection, :count).by(1)
+           
+               }.to change(Inspection, :count).by(1)
 
               expect(Inspection.first.name).to eq("#{SURVEY_OPTIONS[0]}")
               expect(Score.count).to eq(5)
-              expect(page).to have_content("#{@item1.category}")
+              expect(page).to have_content("#{@item1.sub_category}")
+              expect(page).to have_content("#{[@item1, @item2, @item3, @item4, @item5].inject(0) {|sum, hash| sum + hash[:high_score]}}")
+              
             end
 
 
