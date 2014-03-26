@@ -33,6 +33,7 @@ feature "create items for specific layout" do
 	  				 fill_in 'Password', with: @vip.password
 	  				 click_button 'Log in'
 	  				 click_link 'Surveys'
+	  				# binding.pry
 	  				 click_link "#{@survey.name}"
 	  				 page.should have_content("#{@survey.name}")
 	  				 click_link 'New Item'

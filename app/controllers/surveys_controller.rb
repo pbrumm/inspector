@@ -28,7 +28,7 @@ class SurveysController < ApplicationController
     @survey = find_survey
     @site = find_site
     @items = @survey.items #Item.where(:survey_id => @survey.id)
-    @inspection = Inspection.find_or_create_by(site_id: @site.id) || Struct.new(:id, :site_id).new(id: 1, site_id: @site.id)
+    #@inspection = Inspection.find_or_create_by(site_id: @site.id) || Struct.new(:id, :site_id).new(id: 1, site_id: @site.id)
     @score = Score.new
   end
 
