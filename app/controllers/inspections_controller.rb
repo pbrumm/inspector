@@ -9,7 +9,7 @@ class InspectionsController < ApplicationController
     @inspection = Inspection.find(params[:id])
     @site = Site.find(@inspection.site_id)
     @survey = Survey.find(@inspection.survey_id)
-    @items = Item.where(:id == @survey.id).order("sub_category").page(params[:page]).per_page(1)
+    @items = Item.where(survey_id: @survey.id)
     @general = General.new
     @score = @inspection.scores.build
   end
