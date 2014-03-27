@@ -24,7 +24,9 @@ class ScoresController < ApplicationController
 	end
 
 	def update
-		@score = Score.where(inspection_id: score_params[:inspection_id], item_id: score_params[:item_id]).first
+    @site = Site.find(params[:site_id])
+    @inspection = @site.inspections.find(params[:inspection_id])
+    @score = @inspection.scores.find(params[:id])
 
     respond_to do |format|
       if @score.update_attributes(score_params)
