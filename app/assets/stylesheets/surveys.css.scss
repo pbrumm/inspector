@@ -97,10 +97,12 @@ div.item_act {
 	right: 16px;
 	
 	background-color: blue;
-	
+	&.saved {
+		background-color: rgb(190, 193, 201);
+	}
 }
 
-div.item_act a {
+div.item_act span {
 	display: block;
 	width: 100%;
 	position: absolute;

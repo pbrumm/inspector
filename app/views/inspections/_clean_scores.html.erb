@@ -10,24 +10,23 @@
             <div class="item_text small-9 large-9 columns">
             	<%= item.name %> 
 	    		    <% if item.explanation? %>
-	    		      </ br><%= simple_format h(item.explanation) %>
+	    		      <br/><%= simple_format h(item.explanation) %>
 	    		    <% end %>
             </div> 
 	          <div class="small-3 columns">
 		    		  <div class="item_scoring">
 		    		    <div class="row">
-			    		    
+                  <% score = Score.where(item_id: item.id, inspection_id: @inspection.id).first %>
+			    		    <%= form_for [@site, @inspection, score],  remote: true, html: { class: "edit_item", id: "edit_item_#{score.id}"} do |f| %>
 				    		    <div class="item_score item-<%= item.id %> small-4 columns"> 
-				    		    	<%= form_for Score.where(item_id: item.id, inspection_id: @inspection.id).first,  remote: true, html: { class: "edit_item", id: "edit_item_#{item.id}"} do |f| %>
+				    		    	
 				    		    	<%= f.text_field :score_item, placeholder: item.high_score %>
-				    		    	<%= f.hidden_field :inspection_id, as: :hidden, value: params[:id] %>
-				    		    	<%= f.hidden_field :item_id, as: :hidden, value: item.id %>
 		                </div>
-		                <div class="item_hiscore item-<%= item.id %> small-4 columns">
+		                <div class="item_hiscore small-4 columns">
 				    			    / <%= item.high_score %>
 				    		    </div>
-				    		    <div class="item_act act-<%= item.id %> small-3 columns">
-				    		    	<a href="#"><span></span></a>
+				    		    <div class="item_act small-3 columns">
+				    		    	<span></span>
 				    		    </div>			    		    	
 			    		    <% end %>
 
