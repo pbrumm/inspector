@@ -5,18 +5,19 @@ class InspectionsController < ApplicationController
 
   def show
    #binding.pry
+    @site = Site.find(params[:id])
+    
     #@site = Site.find(params[:site_id])
-    @inspection = Inspection.find(params[:id])
-    @site = Site.find(@inspection.site_id)
-    @survey = Survey.find(@inspection.survey_id)
-    @items = Item.where(survey_id: @survey.id)
+    @inspection = @site.inspections.find(params[:id])
+    @survey = @inspection.survey
+    @items = @survey.items
     @general = General.new
     @score = @inspection.scores.build
   end
 
   def new
     @site = Site.find(params[:site_id]) # || Site.find(parms[:inspection][:site_id])
-    @inspection = Inspection.new
+    @inspection = @site.inspections.new
     #@inspection.scores.build
     @surveys = Survey.all
   end
@@ -29,7 +30,7 @@ class InspectionsController < ApplicationController
       if @inspection.save
         #format.html { redirect_to site_inspection_path(@site, @inspection), notice: 'Inspection was created'}
         
-        format.html { redirect_to edit_inspection_path(@inspection), notice: 'Inspection was created.' }
+        format.html { redirect_to edit_site_inspection_path(@site,@inspection), notice: 'Inspection was created.' }
         format.json { render action: 'show', status: :created, location: @inspection }
       else
         format.html { render action: 'new' }
@@ -44,18 +45,20 @@ class InspectionsController < ApplicationController
   end
 
   def edit
-    @inspection = Inspection.find(params[:id])
+    @site = Site.find(params[:site_id])
+    @inspection = @site.inspections.find(params[:id])
     @site = Site.find(@inspection.site_id)
     @items = Item.where(survey_id: @inspection.survey_id)
   end
 
   def update
+    @site = Site.find(params[:inspection][:site_id])
     @inspection = find_inspection
 
     respond_to do |format|
       if @inspection.update_attributes(inspection_params)
 
-        format.html {redirect_to edit_inspection_path(@inspection), notice: 'Score was updated'}
+        format.html {redirect_to edit_site_inspection_path(@site,@inspection), notice: 'Score was updated'}
         format.json {head :no_content}
         format.js
       else
@@ -68,7 +71,7 @@ class InspectionsController < ApplicationController
   private
 
   def find_inspection
-    Inspection.find(params[:id])
+    @site.inspections.find(params[:id])
   end
 
   def inspection_params

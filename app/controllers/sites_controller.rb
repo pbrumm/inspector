@@ -15,8 +15,8 @@ class SitesController < ApplicationController
   end
 
   def create
-  	    #authorize! :index, @user, :message => "Not authorized as an administrator."
-        @site = Site.create!(site_params)
+    #authorize! :index, @user, :message => "Not authorized as an administrator."
+    @site = Site.create!(site_params)
   	
   	respond_to do |format|
       if @site.save
